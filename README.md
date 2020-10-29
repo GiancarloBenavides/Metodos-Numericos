@@ -1,5 +1,3 @@
 # Metodos-Numericos
-Notas y algoritmos para el curso de métodos numéricos 2020-B
-Python en Jupyter Notebook
-
-Creado por Giancarlo Ortiz para el curso de Métodos Numéricos
+Notas y algoritmos para el curso de Métodos Numéricos 2020-B
+Creado por Giancarlo Ortiz con Python en Jupyter Notebook

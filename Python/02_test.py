@@ -1,7 +1,7 @@
 # test_01.py 
 ''' para el curso de métodos numéricos
  por Ing. Giancarlo Ortiz '''
-# Entrada estandar
+# Entrada estándar
 x1 = input("Elige un número entero [1-9]:    ") 
 
 # Funciones incorporadas "Built-in"

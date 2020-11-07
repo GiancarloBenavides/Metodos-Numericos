@@ -1,16 +1,26 @@
 # test_01.py 
 ''' para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
-# Importando módulos biblioteca estandar
-import math
-from math import pi
+# Importando módulos biblioteca estándar
+"""
+La mayor parte del poder de un lenguaje de programación está en sus bibliotecas.
+Un programa debe importar un módulo de biblioteca para poder usarlo.
+Use help() para conocer el contenido de un módulo de biblioteca.
+"""
+import math as m        # Alias para una biblioteca
+from math import pi     # Elementos específicos
 
-# Entrada estandar
+# Entrada estándar
 radio = input("Elige el radio del circulo [cm]:    ")
+
 radio = int(radio)
-area=pi*pow(radio, 2)
+diametro = 2* radio
+area = m.pi * pow(radio, 2)
+circunferencia = 2 * pi * radio
 
 # Salida estándar
 print("-----------------------------------------")
-print(f"El area del circulo: {area:7.2f} cm")
+print(f"El diámetro del circulo es:        {diametro:5.1f} cm")
+print(f"La circunferencia del circulo es:  {circunferencia:5.1f} cm")
+print(f"El área aproximada del circulo es: {area:5.1f} cm\u00b2")
 print("-----------------------------------------")

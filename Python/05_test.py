@@ -1,26 +1,27 @@
-''' este en un comentario 
-de varias lineas '''
-import math as m
-from math import pi
-import numpy as np
-import pylab as pl
+# test_01.py
+''' para el curso de métodos numéricos
+por Ing. Giancarlo Ortiz '''
+# Declaraciones
+directorio = dir(__builtins__)
+callables, noCallables, funciones = [], [], []
+contador1, contador2 = 0, 0
 
-x1=(1+m.sqrt(5))/2
-x2=m.e
-x3=m.pi
+# Estructuras de control
+definiciones = len(directorio)
+for i in directorio:
+    if callable(eval(i)) == True:
+        callables.append(i)
+    else:
+        noCallables.append(i)
 
-y1=round(x3,3)
-y2=m.floor(x3)
-y3=m.ceil(x3)
 
-print(f'Número áureo: ', x1)
-print(f'Número euler: ', x2)
-print('Número pi: ', x3)
-print('redondear: ', y1)
-print('redondear: ', y2)
-print('redondear: ', y3)
+for i in callables:
+    if type(eval(i)).__itemsize__ == 0:
+        funciones.append(i)
 
-if(True):
-    k=-1
-else:
-    k=1
+# Salida estándar
+print("---------------------------------------")
+print(f"Número de definiciones:  {len(directorio)}")
+print(f"Número de llamables:     {len(callables)}")
+print(f"Número de funciones:     {len(funciones)}")
+print(noCallables)

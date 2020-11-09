@@ -1,6 +1,6 @@
 # test_04.py
 ''' BIBLIOTECA ESTÁNDAR 
-para el curso de métodos numéricos
+Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
 # Importando módulos biblioteca estándar
 """ La mayor parte del poder de un lenguaje de programación está en sus bibliotecas.

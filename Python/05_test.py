@@ -1,5 +1,6 @@
-# test_01.py
-''' para el curso de métodos numéricos
+# test_05.py
+''' Estructuras de Control
+Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
 # Declaraciones
 directorio = dir(__builtins__)

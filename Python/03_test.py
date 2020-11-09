@@ -1,4 +1,4 @@
-# test_04.py
+# test_03.py
 ''' FUNCIONES INCLUIDAS - "BUILT-IN"
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz. '''
@@ -7,17 +7,19 @@ por Ing. Giancarlo Ortiz. '''
 Dispone de 67 funciones internas que siempre se están disponibles.
 Naturalmente siempre se pueden sobreescribir estas o definir nuevas funciones. """
 # Entrada estándar
-lista = []
+tipos, lista = [], []
 items = 5
-print(f"Ingrese {items} números decimales [-1.1] →")
+print(f"Ingrese {items} números decimales [\u00b1dd.dd] →")
 
 for x in range(items):
-    texto = input(f"Elige un número {x + 1}:    ")
+    texto = input(f"Elija el número {x + 1} de {items}:      ")
     largo = len(texto)
-    tipo = type(texto)
-    print(f"Se ingreso un dato tipo → {tipo} de {largo} caracteres →")
+    tipos.append(str(type(texto)).split("'")[1])
     valor = float(texto)
     lista.append(valor)
+
+print(f"Lista de valores      :    → {lista}")
+print(f"Lista de tipos        :    → {tipos}")
 
 # Funciones estándar
 suma = sum(lista)
@@ -26,9 +28,9 @@ promedio = suma/largo
 absoluto = abs(promedio)
 entero = int(promedio)
 decimal = promedio - entero
-entero_binario = bin(entero)
-entero_octal = oct(entero)
-entero_hexadecimal = hex(entero)
+binario = bin(entero)
+octal = oct(entero)
+hexadecimal = hex(entero)
 
 # Salida estándar
 print("-----------------------------------------")
@@ -40,7 +42,7 @@ print("-----------------------------------------")
 print(f"la parte entera del promedio es             | {entero:9.2f}")
 print(f"la parte decimal del promedio es            | {decimal:9.2f}")
 print("-----------------------------------------")
-print(f"la parte entera del promedio en binario     |     {entero_binario}")
-print(f"la parte entera del promedio en octal       |     {entero_octal}")
-print(f"la parte entera del promedio en hexadecimal |     {entero_hexadecimal}")
+print(f"la parte entera del promedio en binario     |     {binario}")
+print(f"la parte entera del promedio en octal       |     {octal}")
+print(f"la parte entera del promedio en hexadecimal |     {hexadecimal}")
 print("-----------------------------------------")

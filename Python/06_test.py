@@ -1,5 +1,8 @@
-''' este en un comentario 
-de varias lineas '''
+# test_06.py
+''' IMPORTAR MÓDULOS NO INCLUIDOS
+Ejemplo para el curso de métodos numéricos
+por Ing. Giancarlo Ortiz '''
+# Instalar módulos
 import math as m
 from math import pi
 #import numpy as np

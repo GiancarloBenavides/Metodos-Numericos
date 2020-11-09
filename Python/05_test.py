@@ -1,10 +1,17 @@
 # test_05.py
-''' Estructuras de Control
+''' ESTRUCTURAS DE CONTROL
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
+# Estructuras de control
+""" En programación las estructuras de control, permiten tomar decisiones.
+las estructuras de control modifican el flujo de ejecución.
+El flujo de ejecución cambia la ejecución secuencial de las instrucciones de un programa. """
 # Declaraciones
-directorio = dir(__builtins__)
-callables, noCallables, funciones = [], [], []
+directorio = eval("dir(__builtins__)")
+callables, noCallables, funciones, noFunciones = [], [], [], []
+excepciones, otrasClases, noClases = [], [], []
+errores, advertencias, otrasExcepciones, noExcepciones = [], [], [], []
+imprimir = []
 contador1, contador2 = 0, 0
 
 # Estructuras de control
@@ -15,14 +22,54 @@ for i in directorio:
     else:
         noCallables.append(i)
 
-
 for i in callables:
-    if type(eval(i)).__itemsize__ == 0:
+    try:
+        if eval(f"issubclass({i}, BaseException)"):
+            excepciones.append(i)
+        else:
+            otrasClases.append(i)
+    except:
+        noClases.append(i)
+
+for i in excepciones:
+    if "Error" in i:
+        errores.append(i)
+    elif "Warning" in i:
+        advertencias.append(i)
+    else:
+        otrasExcepciones.append(i)
+
+for i in noClases:
+    tipo_cadena = str(type(eval(i))).split("'")[1]
+    if ("Printer" in tipo_cadena) or ("Helper" in tipo_cadena):
+        imprimir.append(i)
+    elif "builtin_function_or_method" == tipo_cadena:
         funciones.append(i)
+    else:
+        noFunciones.append(i)
+
+# Funciones incluidas en Python
+especiales = imprimir + noFunciones
+funciones_incluidas = otrasClases + funciones
 
 # Salida estándar
-print("---------------------------------------")
-print(f"Número de definiciones:  {len(directorio)}")
-print(f"Número de llamables:     {len(callables)}")
-print(f"Número de funciones:     {len(funciones)}")
-print(noCallables)
+print("-------------------------------------------------")
+print(" DECLARACIONES EN MODULO BUILTIN DE PYTHON       ")
+print("-------------------------------------------------")
+print(f"Total de definiciones incluidas ============= {len(directorio):3d}")
+print(f"  \u251c\u2500 Definiciones no invocables --------- {len(noCallables):3d}")
+print(f"  \u2514\u2500 Definiciones de excepciones -------- {len(excepciones):3d}")
+print(f"      \u251c\u2500 Tipos de error           : {len(errores):2d} :")
+print(f"      \u251c\u2500 Tipos de advertencias    : {len(advertencias):2d} :")
+print(f"      \u2514\u2500 Tipos otras excepciones  : {len(otrasExcepciones):2d} :")
+print(f"  \u2514\u2500 Definiciones especiales ------------ {len(especiales):3d}")
+print(f"      \u251c\u2500 Para imprimir objetos    : {len(imprimir):2d} :")
+print(f"      \u2514\u2500 Para detener ejecución   : {len(noFunciones):2d} :")
+print(f"  \u2514\u2500 Definiciones de funciones ---------- {len(funciones_incluidas):3d}")
+print(f"      \u251c\u2500 Casting de tipos         : {len(otrasClases):2d} :")
+print(f"      \u2514\u2500 Otras funciones          : {len(funciones):2d} :")
+print("-------------------------------------------------")
+print("FUNCIONES BUILTIN")
+print("-------------------------------------------------")
+print(funciones_incluidas)
+print("-------------------------------------------------")

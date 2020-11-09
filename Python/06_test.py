@@ -2,8 +2,8 @@
 de varias lineas '''
 import math as m
 from math import pi
-import numpy as np
-import pylab as pl
+#import numpy as np
+#import pylab as pl
 
 x1=(1+m.sqrt(5))/2
 x2=m.e

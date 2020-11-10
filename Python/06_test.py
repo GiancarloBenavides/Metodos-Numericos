@@ -1,49 +1,75 @@
 # test_06.py
-''' IMPORTAR MÓDULOS NO INCLUIDOS
+''' ESTRUCTURAS DE CONTROL
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
-# Instalar módulos
-''' Los módulos que no están incluidos deben instalarse para poder importarse.
-Los módulos de Python están disponibles para instalar con cualquier administrador de paquetes.
-Los administradores de paquetes son herramientas como pip de Pypi o conda de Anaconda
-EJEMPLO:
-→ D:\> pip install numpy.
-→ D:\> conda install numpy.
-NOTAS:
-→ Anaconda administra las dependencias y permite instalar software no Python. 
-→ Pypi es un repositorio que hace disponible mas de 270K paquetes. '''
+# Estructuras de control
+""" En programación las estructuras de control, permiten tomar decisiones.
+las estructuras de control modifican el flujo de ejecución.
+El flujo de ejecución cambia la ejecución secuencial de las instrucciones de un programa. """
+# Declaraciones
+directorio = eval("dir(__builtins__)")
+callables, noCallables, funciones, noFunciones = [], [], [], []
+excepciones, otrasClases, noClases = [], [], []
+errores, advertencias, otrasExcepciones, noExcepciones = [], [], [], []
+imprimir = []
+contador1, contador2 = 0, 0
 
-# Importar módulos instalados
-import math as m
-from math import pi, e
-import numpy as np
+# Estructuras de control
+definiciones = len(directorio)
+for i in directorio:
+    if callable(eval(i)) == True:
+        callables.append(i)
+    else:
+        noCallables.append(i)
 
-# Operaciones con números
-n1 = (1+m.sqrt(5))/2
-n2 = e
-n3 = pi
+for i in callables:
+    try:
+        if eval(f"issubclass({i}, BaseException)"):
+            excepciones.append(i)
+        else:
+            otrasClases.append(i)
+    except:
+        noClases.append(i)
 
-# Operaciones con el modulo
-numero_de_redondeos = 5
-x1, y1, z1 = round(n1, 3), round(n2, 3), round(n3, 3)
-x2, y2, z2 = int(n1), int(n2), int(n3)
-x3, y3, z3 = m.floor(n1), m.floor(n2), m.floor(n3)
-x4, y4, z4 = m.ceil(n1), m.ceil(n2), m.ceil(n3)
-x5, y5, z5 = m.trunc(n1), m.trunc(n2), m.trunc(n3)
+for i in excepciones:
+    if "Error" in i:
+        errores.append(i)
+    elif "Warning" in i:
+        advertencias.append(i)
+    else:
+        otrasExcepciones.append(i)
+
+for i in noClases:
+    tipo_cadena = str(type(eval(i))).split("'")[1]
+    if ("Printer" in tipo_cadena) or ("Helper" in tipo_cadena):
+        imprimir.append(i)
+    elif "builtin_function_or_method" == tipo_cadena:
+        funciones.append(i)
+    else:
+        noFunciones.append(i)
+
+# Funciones incluidas en Python
+especiales = imprimir + noFunciones
+funciones_incluidas = otrasClases + funciones
 
 # Salida estándar
-print(f"----------------------------------------------------")
-print(f" NumPy importado con éxito en su version:  {np.__version__}")
-print(f"----------------------------------------------------")
-print(f' Número áureo:       {x1}')
-print(f' Número de euler:    {x2}')
-print(f' Número pi:          {x3}')
-print(f"----------------------------------------------------")
-print(f" Redondeo \ Número    |  áureo  |  euler  |    pi    |")
-print(f"----------------------------------------------------")
-print(f' Redondeo con round() |   {x1} |  {y1}  |   {z1}  |')
-print(f' Redondeo con int()   |   {x2}     |  {y2}      |   {z2}      |')
-print(f' Redondeo con floor() |   {x3}     |  {y3}      |   {z3}      |')
-print(f' Redondeo con ceil()  |   {x4}     |  {y4}      |   {z4}      |')
-print(f' Redondeo con trunc() |   {x5}     |  {y5}      |   {z5}      |')
-print("----------------------------------------------------")
+print("-------------------------------------------------")
+print(" DECLARACIONES EN MODULO BUILTIN DE PYTHON       ")
+print("-------------------------------------------------")
+print(f"Total de definiciones incluidas ============= {len(directorio):3d}")
+print(f"  \u251c\u2500 Definiciones no invocables --------- {len(noCallables):3d}")
+print(f"  \u2514\u2500 Definiciones de excepciones -------- {len(excepciones):3d}")
+print(f"      \u251c\u2500 Tipos de error           : {len(errores):2d} :")
+print(f"      \u251c\u2500 Tipos de advertencias    : {len(advertencias):2d} :")
+print(f"      \u2514\u2500 Tipos otras excepciones  : {len(otrasExcepciones):2d} :")
+print(f"  \u2514\u2500 Definiciones especiales ------------ {len(especiales):3d}")
+print(f"      \u251c\u2500 Para imprimir objetos    : {len(imprimir):2d} :")
+print(f"      \u2514\u2500 Para detener ejecución   : {len(noFunciones):2d} :")
+print(f"  \u2514\u2500 Definiciones de funciones ---------- {len(funciones_incluidas):3d}")
+print(f"      \u251c\u2500 Casting de tipos         : {len(otrasClases):2d} :")
+print(f"      \u2514\u2500 Otras funciones          : {len(funciones):2d} :")
+print("-------------------------------------------------")
+print("FUNCIONES BUILTIN")
+print("-------------------------------------------------")
+print(funciones_incluidas)
+print("-------------------------------------------------")

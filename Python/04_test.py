@@ -1,25 +1,48 @@
 # test_04.py
-''' BIBLIOTECA ESTÁNDAR 
+''' FUNCIONES INCLUIDAS - "BUILT-IN"
 Ejemplo para el curso de métodos numéricos
-por Ing. Giancarlo Ortiz '''
-# Importando módulos biblioteca estándar
-""" La mayor parte del poder de un lenguaje de programación está en sus bibliotecas.
-Un programa debe importar un módulo de biblioteca para poder usarlo.
-Use help() para conocer el contenido de un módulo de biblioteca. """
+por Ing. Giancarlo Ortiz. '''
+# Funciones incorporadas en el modulo estándar builtins
+""" Python cuenta con un modulo que no necesita importarse.
+Dispone de 67 funciones internas que siempre se están disponibles.
+Naturalmente siempre se pueden sobreescribir estas o definir nuevas funciones. """
+# Entrada estándar
+tipos, lista = [], []
+items = 5
+print(f"Ingrese {items} números decimales [\u00b1dd.dd] →")
 
-# Modulo para funciones matemáticas de la Biblioteca Estándar incluida "Built-in"
-import math as m        # Alias para una biblioteca
-from math import pi     # Elementos específicos
-radio = input("Elige el radio del circulo [cm]:    ")
+for x in range(items):
+    texto = input(f"Elija el número {x + 1} de {items}:      ")
+    largo = len(texto)
+    tipos.append(str(type(texto)).split("'")[1])
+    valor = float(texto)
+    lista.append(valor)
 
-radio = int(radio)
-diámetro = 2 * radio
-area = m.pi * pow(radio, 2)
-circunferencia = 2 * pi * radio
+print(f"Lista de valores      :    → {lista}")
+print(f"Lista de tipos        :    → {tipos}")
+
+# Funciones estándar
+suma = sum(lista)
+largo = len(lista)
+promedio = suma/largo
+absoluto = abs(promedio)
+entero = int(promedio)
+decimal = promedio - entero
+binario = bin(entero)
+octal = oct(entero)
+hexadecimal = hex(entero)
 
 # Salida estándar
 print("-----------------------------------------")
-print(f"El diámetro del circulo es:        {diámetro:5.1f} cm")
-print(f"La circunferencia del circulo es:  {circunferencia:5.1f} cm")
-print(f"El área aproximada del circulo es: {area:5.1f} cm\u00b2")
+print(f"La suma exacta de los valores ingresados es |     {suma}")
+print(f"Si formateamos la suma a dos decimales es   | {suma:9.2f}")
+print(f"El promedio de los valores ingresados es    | {promedio:9.2f}")
+print("-----------------------------------------")
+
+print(f"la parte entera del promedio es             | {entero:9.2f}")
+print(f"la parte decimal del promedio es            | {decimal:9.2f}")
+print("-----------------------------------------")
+print(f"la parte entera del promedio en binario     |     {binario}")
+print(f"la parte entera del promedio en octal       |     {octal}")
+print(f"la parte entera del promedio en hexadecimal |     {hexadecimal}")
 print("-----------------------------------------")

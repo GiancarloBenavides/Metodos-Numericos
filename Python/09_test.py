@@ -30,9 +30,9 @@ position = K * np.cos(frecuencia * tiempo)
 velocidad = K * np.sin(frecuencia * tiempo)
 # Gráficas
 plt.plot(tiempo, position, label="Posición(\u03B8)")
-plt.plot(tiempo, velocidad, label="Velocidad(\u03B8)")
+plt.plot(tiempo, velocidad, label="Velocidad(clsgit)")
 # Propiedades de las gráficas
-plt.title("Gráficas Trigonométricas")
+plt.title("Posición y Velocidad del Péndulo Simple")
 plt.xlabel("tiempo [sg]")
 plt.ylabel("amplitud [grados]")
 plt.xlim(0, 60)

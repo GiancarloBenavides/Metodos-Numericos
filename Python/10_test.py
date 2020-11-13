@@ -1,37 +1,96 @@
+"""
+=====================
+Interactive functions
+=====================
+
+This provides examples of uses of interactive functions, such as ginput,
+waitforbuttonpress and manual clabel placement.
+
+This script must be run interactively using a backend that has a
+graphical user interface (for example, using GTK3Agg backend, but not
+PS backend).
+
+"""
+
+import time
+
+import numpy as np
 import matplotlib.pyplot as plt
-from warnings import filterwarnings
 
-#matplotlib inline
-filterwarnings('ignore') # Ignorar warnings
 
-def move_spines():
-    """Crea la figura de pyplot y los ejes. Mueve las lineas de la izquierda y de abajo
-    para que se intersecten con el origen. Elimina las lineas de la derecha y la de arriba.
-    Devuelve los ejes."""
-    fix, ax = plt.subplots()
-    for spine in ["left", "bottom"]:
-        ax.spines[spine].set_position("zero")
-    
-    for spine in ["right", "top"]:
-        ax.spines[spine].set_color("none")
-    
-    return ax
+def tellme(s):
+    print(s)
+    plt.title(s, fontsize=16)
+    plt.draw()
 
-def vect_fig(): 
-    """Genera el grafico de los vectores en el plano"""
-    ax = move_spines()
-    
-    ax.set_xlim(-5, 5)
-    ax.set_ylim(-5, 5)
-    ax.grid()
-    vecs = [[2, 4], [-3, 3], [-4, -3.5]] # lista de vectores
-    for v in vecs:
-        ax.annotate(" ", xy=v, xytext=[0, 0],
-                   arrowprops=dict(facecolor="blue",
-                                  shrink=0,
-                                  alpha=0.7,
-                                  width=0.5))
-        ax.text(1.1 * v[0], 1.1 * v[1], v)
+##################################################
+# Define a triangle by clicking three points
 
-vect_fig() # crea el gráfico
 
+plt.clf()
+plt.setp(plt.gca(), autoscale_on=False)
+
+tellme('You will define a triangle, click to begin')
+
+plt.waitforbuttonpress()
+
+while True:
+    pts = []
+    while len(pts) < 3:
+        tellme('Select 3 corners with mouse')
+        pts = np.asarray(plt.ginput(3, timeout=-1))
+        if len(pts) < 3:
+            tellme('Too few points, starting over')
+            time.sleep(1)  # Wait a second
+
+    ph = plt.fill(pts[:, 0], pts[:, 1], 'r', lw=2)
+
+    tellme('Happy? Key click for yes, mouse click for no')
+
+    if plt.waitforbuttonpress():
+        break
+
+    # Get rid of fill
+    for p in ph:
+        p.remove()
+
+
+##################################################
+# Now contour according to distance from triangle
+# corners - just an example
+
+# Define a nice function of distance from individual pts
+def f(x, y, pts):
+    z = np.zeros_like(x)
+    for p in pts:
+        z = z + 1/(np.sqrt((x - p[0])**2 + (y - p[1])**2))
+    return 1/z
+
+
+X, Y = np.meshgrid(np.linspace(-1, 1, 51), np.linspace(-1, 1, 51))
+Z = f(X, Y, pts)
+
+CS = plt.contour(X, Y, Z, 20)
+
+tellme('Use mouse to select contour label locations, middle button to finish')
+CL = plt.clabel(CS, manual=True)
+
+##################################################
+# Now do a zoom
+
+tellme('Now do a nested zoom, click to begin')
+plt.waitforbuttonpress()
+
+while True:
+    tellme('Select two corners of zoom, middle mouse button to finish')
+    pts = plt.ginput(2, timeout=-1)
+    if len(pts) < 2:
+        break
+    (x0, y0), (x1, y1) = pts
+    xmin, xmax = sorted([x0, x1])
+    ymin, ymax = sorted([y0, y1])
+    plt.xlim(xmin, xmax)
+    plt.ylim(ymin, ymax)
+
+tellme('All Done!')
+plt.show()

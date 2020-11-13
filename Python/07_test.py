@@ -14,6 +14,7 @@ NOTAS:
 → Pypi es un repositorio que hace disponible mas de 270K paquetes. '''
 
 # Importar módulos instalados
+import sys
 import math as m
 from math import pi, e
 import numpy as np
@@ -33,7 +34,9 @@ x5, y5, z5 = m.trunc(n1), m.trunc(n2), m.trunc(n3)
 
 # Salida estándar
 print(f"----------------------------------------------------")
-print(f" NumPy importado con éxito en su version:  {np.__version__}")
+print(f" NumPy importado con éxito")
+print(f" Versión Python: {sys.version.split(' ')[0]}")
+print(f" Versión NumPy:  {np.__version__}")
 print(f"----------------------------------------------------")
 print(f' Número áureo:       {n1}')
 print(f' Número de euler:    {n2}')

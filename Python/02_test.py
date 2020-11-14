@@ -6,10 +6,11 @@ por Ing. Giancarlo Ortiz. '''
 """ En programación, los flujos estándar son canales de comunicación de entrada y salida.
 Estos canales conectan el programa de computadora y su entorno.
 Permiten introducir y recibir datos desde el programa. """
+
 # Entrada estándar
 x1 = input("Elige un número entero [1-9]:    ")
 
-# Operaciones con números
+# Asignaciones y operaciones con números
 x1 = int(x1)
 y1 = pow(x1, 3)
 y2 = pow(x1, 0.5)

@@ -1,13 +1,3 @@
-# test_08.py
-''' FUNCIONES
-Ejemplo para el curso de métodos numéricos
-por Ing. Giancarlo Ortiz '''
-# Instalar módulos
-''' Las funciones en Python se definen con la palabra clave def, seguida del nombre de la función.
-Sus parámetros se escriben entre parentesis y pueden incluir valores por defecto.
-Otra forma de escribir funciones, aunque menos utilizada, es con la palabra clave lambda.
-El valor devuelto en las funciones con def será el dado con la instrucción return. '''
-
 # Importar módulos que requieren instalación
 import numpy as np
 from numpy import ndarray
@@ -116,34 +106,3 @@ Adj = adj(A)
 Inv = inv(A)              # función definida en el script
 Inv_np = np.linalg.inv(A) # función incorporada en NumPy
 
-# Salida estándar
-print(f"--------------------------------------------------------")
-print(f"Dada una matriz de entrada A en R³:")
-print(f">>>")
-print(f"\n{A}\n")
-print(f"--------------------------------------------------------")
-print(f"Se tiene que cada matriz  Ă(i,j) se define como el menor")
-print(f"que resulta  de eliminar  la i-ésima fila  y  la j-ésima")
-print(f"columna, por ejemplo A₁₃ es:")
-print(f">>>")
-print(f"\n{A13}\n")
-print(f"--------------------------------------------------------")
-print(f"El cofactor se define como C(i,j) =(-1)²det(Ă(i,j)), por")
-print(f"ejemplo C₁₃ es igual a {C13};  finalmente se tiene que la")
-print(f"matriz de  cofactores de A en R³ definida como Cof(A) es")
-print(f"aquella  que resulta de  reemplazar cada elemento por su") 
-print(f"cofactor:")
-print(f">>>")
-print(f"\n{Cof}\n")
-print(f"--------------------------------------------------------")
-print(f"Y la matriz adjunta  definida  como la transpuesta de la")
-print(f"matriz de cofactores es Adj(A) =trs(Cof(A)) que resulta:")
-print(f">>>")
-print(f"\n{Adj}\n")
-print(f"--------------------------------------------------------")
-print(f"Finalmente dado que inv(A) = (1/det(A)).adj(A) se  tiene")
-print(f"que la inversa definida en el script y la de NumPy son:")
-print(f">>>")
-print(f"\n{Inv}\n")
-print(f">>>")
-print(f"\n{Inv_np}\n")

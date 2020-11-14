@@ -6,7 +6,8 @@ por Ing. Giancarlo Ortiz '''
 """ En programación las estructuras de control, permiten tomar decisiones.
 las estructuras de control modifican el flujo de ejecución.
 El flujo de ejecución cambia la ejecución secuencial de las instrucciones de un programa. """
-# Declaraciones
+
+# Declaración de variables
 directorio = eval("dir(__builtins__)")
 callables, noCallables, funciones, noFunciones = [], [], [], []
 excepciones, otrasClases, noClases = [], [], []
@@ -14,7 +15,7 @@ errores, advertencias, otrasExcepciones, noExcepciones = [], [], [], []
 imprimir = []
 contador1, contador2 = 0, 0
 
-# Estructuras de control
+# Estructuras de control (Ciclos y condicionales)
 definiciones = len(directorio)
 for i in directorio:
     if callable(eval(i)) == True:
@@ -48,7 +49,7 @@ for i in noClases:
     else:
         noFunciones.append(i)
 
-# Funciones incluidas en Python
+# Asignaciones y operaciones con variables
 especiales = imprimir + noFunciones
 funciones_incluidas = otrasClases + funciones
 

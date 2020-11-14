@@ -6,10 +6,16 @@ por Ing. Giancarlo Ortiz. '''
 """ Python usa la codificación Unicode en lugar de ASCII.
 Lo que hace posibles mas de 100.000 Caracteres.
 Type("x") → <class 'str'> → cadena Unicode. """
+
+# Importando funcionalidad al script 
 import sys
+
+# Asignaciones y operaciones con cadenas
 info = sys.version
 version = info.split(" ")[0]
 plataforma = info[info.find("[")+1:len(info)-1]
+
+# Salida estándar
 print("---------------------------------------")
 print(f"la instalación de Python {version} fue exitosa")
 print(f"Tu plataforma elegida es {plataforma}...")

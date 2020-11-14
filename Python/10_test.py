@@ -1,96 +1,94 @@
-"""
-=====================
-Interactive functions
-=====================
+# test_10.py
+''' ARCHIVOS
+Ejemplo para el curso de métodos numéricos
+por Ing. Giancarlo Ortiz '''
+# Instalar módulos
+''' Python proporciona funciones y métodos básicos para manipular archivos.
+Estos están disponibles en la biblioteca estándar de forma predeterminada. '''
 
-This provides examples of uses of interactive functions, such as ginput,
-waitforbuttonpress and manual clabel placement.
+# Importar módulos
+import os
+import runpy
+from matplotlib.pyplot import flag
+import test
 
-This script must be run interactively using a backend that has a
-graphical user interface (for example, using GTK3Agg backend, but not
-PS backend).
-
-"""
-
-import time
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-
-def tellme(s):
-    print(s)
-    plt.title(s, fontsize=16)
-    plt.draw()
-
-##################################################
-# Define a triangle by clicking three points
+# defino una función para limpiar la salida estándar
+def limpiar():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
 
 
-plt.clf()
-plt.setp(plt.gca(), autoscale_on=False)
+# Declaración de variables
+Path_base = os.getcwd()
+Base = "/Python"
+Path1 = f".{Base}/01_test.py"
+Path2 = f".{Base}/08_test.py"
+Cadena_inicio = "# Importar"
+Cadena_fin = "# Salida"
+Modulo = "algebraico.py"
 
-tellme('You will define a triangle, click to begin')
+# Operaciones con archivos
+limpiar()
+print(">>>")
+print(f" Ejecutando el script {Path1}")
+runpy.run_path(path_name=Path1)
+print(">>>")
+print(f" Eliminando modulo {Modulo}")
+if os.path.exists(Modulo):
+    os.remove(Modulo)
 
-plt.waitforbuttonpress()
-
-while True:
-    pts = []
-    while len(pts) < 3:
-        tellme('Select 3 corners with mouse')
-        pts = np.asarray(plt.ginput(3, timeout=-1))
-        if len(pts) < 3:
-            tellme('Too few points, starting over')
-            time.sleep(1)  # Wait a second
-
-    ph = plt.fill(pts[:, 0], pts[:, 1], 'r', lw=2)
-
-    tellme('Happy? Key click for yes, mouse click for no')
-
-    if plt.waitforbuttonpress():
+# Lectura y escritura de archivos
+print(">>>")
+archivo_lectura = open(Path2, "rt", encoding="utf8")
+archivo_escritura = open(Modulo, "a", encoding="utf8")
+Guardar = False
+Texto = ""
+Contador = 0
+Inicio = 0
+Hash = 0
+for Linea in archivo_lectura:
+    Contador = Contador + 1
+    if Cadena_inicio in Linea:
+        print(f" Inicia la escritura desde: {Contador}")
+        Inicio = Contador
+        Guardar = True
+    if Cadena_fin in Linea:
+        print(f"::END::")
+        print(f" Finaliza la escritura del archivo")
+        print(f" Lineas escritas: {Contador-Inicio} Lineas")
+        Guardar = False
         break
 
-    # Get rid of fill
-    for p in ph:
-        p.remove()
+    if Guardar:
+        Hash = Hash + 1
+        if Hash < 40:
+            print(f"-", end="")
+        else:
+            Hash = 0
+            print(f"-")
+        archivo_escritura.write(Linea)
 
 
-##################################################
-# Now contour according to distance from triangle
-# corners - just an example
+archivo_lectura.close()
+archivo_escritura.close()
 
-# Define a nice function of distance from individual pts
-def f(x, y, pts):
-    z = np.zeros_like(x)
-    for p in pts:
-        z = z + 1/(np.sqrt((x - p[0])**2 + (y - p[1])**2))
-    return 1/z
+# Importando archivos
+print("---------------------------------------")
+print(f" Importando el script {Modulo}")
+print("---------------------------------------")
+import numpy as np      # Importando dependencias
+import algebraico       # Importar el archivo creado
 
+# Operaciones con el archivo importado
+A = np.array([[1, 1], [-1, -3]])
+D = algebraico.det(A)
 
-X, Y = np.meshgrid(np.linspace(-1, 1, 51), np.linspace(-1, 1, 51))
-Z = f(X, Y, pts)
-
-CS = plt.contour(X, Y, Z, 20)
-
-tellme('Use mouse to select contour label locations, middle button to finish')
-CL = plt.clabel(CS, manual=True)
-
-##################################################
-# Now do a zoom
-
-tellme('Now do a nested zoom, click to begin')
-plt.waitforbuttonpress()
-
-while True:
-    tellme('Select two corners of zoom, middle mouse button to finish')
-    pts = plt.ginput(2, timeout=-1)
-    if len(pts) < 2:
-        break
-    (x0, y0), (x1, y1) = pts
-    xmin, xmax = sorted([x0, x1])
-    ymin, ymax = sorted([y0, y1])
-    plt.xlim(xmin, xmax)
-    plt.ylim(ymin, ymax)
-
-tellme('All Done!')
-plt.show()
+print(f" creando vector de prueba:")
+print(">>>")
+print(f"\n{A}\n")
+print(f" Calculando el determinante:")
+print(">>>")
+print(f"\n{D}\n")
+print("---------------------------------------")

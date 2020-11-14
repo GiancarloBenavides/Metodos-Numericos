@@ -6,11 +6,15 @@ por Ing. Giancarlo Ortiz. '''
 """ Python cuenta con un modulo que no necesita importarse.
 Dispone de 67 funciones internas que siempre se están disponibles.
 Naturalmente siempre se pueden sobreescribir estas o definir nuevas funciones. """
-# Entrada estándar
+
+# Declaración de variables
 tipos, lista = [], []
 items = 5
+
+# Entrada estándar
 print(f"Ingrese {items} números decimales [\u00b1dd.dd] →")
 
+# Estructuras de control - ciclo for
 for x in range(items):
     texto = input(f"Elija el número {x + 1} de {items}:      ")
     largo = len(texto)
@@ -18,10 +22,11 @@ for x in range(items):
     valor = float(texto)
     lista.append(valor)
 
+# Mostrar valores ingresados por salida estándar
 print(f"Lista de valores      :    → {lista}")
 print(f"Lista de tipos        :    → {tipos}")
 
-# Funciones estándar
+# Asignaciones y llamado a funciones de la biblioteca estándar
 suma = sum(lista)
 largo = len(lista)
 promedio = suma/largo
@@ -38,7 +43,6 @@ print(f"La suma exacta de los valores ingresados es |     {suma}")
 print(f"Si formateamos la suma a dos decimales es   | {suma:9.2f}")
 print(f"El promedio de los valores ingresados es    | {promedio:9.2f}")
 print("-----------------------------------------")
-
 print(f"la parte entera del promedio es             | {entero:9.2f}")
 print(f"la parte decimal del promedio es            | {decimal:9.2f}")
 print("-----------------------------------------")

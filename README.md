@@ -1,6 +1,6 @@
 <style type="text/css">
     .formula {
-        background: #eee;
+        background: #aaf;
         border-radius: 50px;
         padding: 15px;
     }
@@ -40,8 +40,8 @@ Creado por Giancarlo Ortiz con Python en Jupyter Notebook
 ## Teoría del Error
 El error es inherente a los métodos numéricos, por tanto es fundamental hacer  seguimiento de la propagación de los errores cometidos a fin de poder estimar el grado de aproximación de la solución que se obtiene.
 
-* Propagación del Error
-* Convergencia
+* _Propagación del Error_
+* _Convergencia_
 
 ## Raíces de ecuaciones
 El objetivo de este apartado es la determinación de los valores de la variable independiente x para los que se cumple:
@@ -76,8 +76,8 @@ Dada una función en R² definida en un intervalo [a,b], estamos interesados en 
 </div>
 
 ### Métodos:
-* Introducción
-* Método del punto medio
-* Método del trapecio
-* Regla Simpson
-* Manejo del error
+* _Introducción_
+* _Método del punto medio_
+* _Método del trapecio_
+* _Regla Simpson_
+* _Manejo del error_

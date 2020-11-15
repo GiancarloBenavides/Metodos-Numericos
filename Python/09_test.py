@@ -5,8 +5,8 @@ por Ing. Giancarlo Ortiz '''
 # Instalar módulos
 ''' La generación de gráficos en Python requiere módulos adicionales.
 Existe una gran variedad de módulos para hacer gráficos de todo tipo con Python.
-Asi como el estándar de facto en ciencia para la operación numérica es NumPy,
-Matplotlib hace posible la generación de estos gráficos a partir de datos contenidos en listas o arrays. '''
+Asi como  NumPy es el estándar de facto en ciencia para la operación numérica;
+Matplotlib, lo es para la generación de gráficos a partir de datos contenidos en listas o arrays. '''
 
 # Importar módulos incluidos en Python por defecto
 from sys import version as Py_version

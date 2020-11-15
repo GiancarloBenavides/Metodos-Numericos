@@ -3,9 +3,11 @@
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
 # Estructuras de control
-""" En programación las estructuras de control, permiten tomar decisiones.
-las estructuras de control modifican el flujo de ejecución.
-El flujo de ejecución cambia la ejecución secuencial de las instrucciones de un programa. """
+""" En programación, las estructuras de control, permiten tomar decisiones.
+las estructuras de control modifican el flujo de ejecución de un programa.
+Python dispone de ciclos y condicionales para controlar el flujo de ejecución.
+→ Los ciclos son porciones de código que se repite hasta alanzar una condición.
+→ Los condicionale son porciones de código que se ejecutan según sea una condición.  """
 
 # Declaración de variables
 directorio = eval("dir(__builtins__)")

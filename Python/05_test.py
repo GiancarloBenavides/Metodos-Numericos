@@ -3,7 +3,8 @@
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
 # Importando módulos biblioteca estándar
-""" La mayor parte del poder de un lenguaje de programación está en sus bibliotecas.
+""" En programación, las bibliotecas representan colecciones de código reusable.
+La mayor parte del poder de un lenguaje de programación está en sus bibliotecas.
 Un programa debe importar un módulo de biblioteca para poder usarlo.
 Use help() para conocer el contenido de un módulo de biblioteca. """
 

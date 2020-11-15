@@ -3,8 +3,9 @@
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz. '''
 # Funciones incorporadas en el modulo estándar builtins
-""" Python cuenta con un modulo que no necesita importarse.
-Dispone de 67 funciones internas que siempre se están disponibles.
+""" En programación, una función es una sección reutilizable y aislada de un programa.
+Python Dispone de 67 funciones internas que siempre se están disponibles.
+Estas están incluidas en un modulo que no necesita importarse.
 Naturalmente siempre se pueden sobreescribir estas o definir nuevas funciones. """
 
 # Declaración de variables

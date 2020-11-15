@@ -5,7 +5,8 @@ por Ing. Giancarlo Ortiz. '''
 # Entrada y salida estándar de python 3
 """ En programación, los flujos estándar son canales de comunicación de entrada y salida.
 Estos canales conectan el programa de computadora y su entorno.
-Permiten introducir y recibir datos desde el programa. """
+Python incluye por defecto funciones que permiten Entrada/Salida.
+Lo que hace posible introducir y recibir datos desde el programa. """
 
 # Entrada estándar
 x1 = input("Elige un número entero [1-9]:    ")

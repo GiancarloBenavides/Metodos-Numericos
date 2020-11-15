@@ -3,7 +3,8 @@
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz. '''
 # Operaciones con cadenas en python 3
-""" Python usa la codificación Unicode en lugar de ASCII.
+""" En programación, las operaciones mas básicas incluyen operaciones con cadenas.
+Python usa la codificación Unicode en lugar de ASCII.
 Lo que hace posibles mas de 100.000 Caracteres.
 Type("x") → <class 'str'> → cadena Unicode. """
 

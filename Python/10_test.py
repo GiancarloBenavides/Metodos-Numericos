@@ -8,7 +8,8 @@ Estos están disponibles en la biblioteca estándar de forma predeterminada. '''
 
 # Importar módulos
 import os
-import runpy
+import shutil
+import runpy as rp
 from matplotlib.pyplot import flag
 import test
 
@@ -27,13 +28,13 @@ Path1 = f".{Base}/01_test.py"
 Path2 = f".{Base}/08_test.py"
 Cadena_inicio = "# Importar"
 Cadena_fin = "# Salida"
-Modulo = "algebraico.py"
+Modulo = "LabMath.py"
 
 # Operaciones con archivos
 limpiar()
 print(">>>")
 print(f" Ejecutando el script {Path1}")
-runpy.run_path(path_name=Path1)
+rp.run_path(path_name=Path1)
 print(">>>")
 print(f" Eliminando modulo {Modulo}")
 if os.path.exists(Modulo):
@@ -74,16 +75,22 @@ for Linea in archivo_lectura:
 archivo_lectura.close()
 archivo_escritura.close()
 
+# Moviendo archivos
+print(">>>")
+print(f" Moviendo el script {Modulo}")
+if os.path.exists(Modulo):
+    shutil.move(Modulo, f".{Base}/{Modulo}")
+
 # Importando archivos
 print("---------------------------------------")
 print(f" Importando el script {Modulo}")
 print("---------------------------------------")
-import numpy as np      # Importando dependencias
-import algebraico       # Importar el archivo creado
+import numpy as np          # Importando dependencias
+import LabMath as al        # Importar el archivo creado
 
 # Operaciones con el archivo importado
 A = np.array([[1, 1], [-1, -3]])
-D = algebraico.det(A)
+D = al.det(A)
 
 print(f" creando vector de prueba:")
 print(">>>")

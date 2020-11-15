@@ -3,9 +3,10 @@
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz. '''
 # Tipos de datos estándar de python 3
-""" En programación, los flujos estándar son canales de comunicación de entrada y salida.
-Estos canales conectan el programa de computadora y su entorno.
-Permiten introducir y recibir datos desde el programa. """
+""" En programación, los tipos de datos definen los valores que puede tomar una variable.
+En Python existen 14 tipos de datos básicos con sus operaciones asociadas.
+Todo valor que pueda ser asignado a una variable tiene asociado un tipo de dato.
+En Python todos los tipos de datos son objetos que heredan de una meta-clase. """
 
 # Árbol de Tipos 
 print("-------------------------")

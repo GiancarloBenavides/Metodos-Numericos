@@ -1,33 +1,7 @@
-[! [Licencia] (https://img.shields.io/badge/license-MIT-blue.svg)] (http://kmonsoor.mit-license.org/)
-
 # Métodos-Numéricos
 Notas y algoritmos para el curso de Métodos Numéricos 2020-B
 Creado por Giancarlo Ortiz con Python en Jupyter Notebook.
 
-Galileo Galilei (1564-1642):
->La matemática es el alfabeto con el que Dios escribió el mundo
-
-:electron: Python
-```Python
-import NumPy
-import MatPlotLib
-```
-
-:file_folder: Python
-## Generalidades De Python 
-
-* **01_test.py** - _Operaciones Con Cadenas_
-* **02_test.py** - _Entrada Y Salida Estándar_
-* **03_test.py** - _Tipos De Datos_
-* **04_test.py** - _Funciones Incluidas - "Built-In"_
-* **05_test.py** - _Biblioteca Estándar_
-* **06_test.py** - _Estructuras De Control_
-* **07_test.py** - _Importar Módulos No Incluidos_
-* **08_test.py** - _Funciones_
-* **09_test.py** - _Gráficas_
-* **10_test.py** - _Archivos_
-
-:file_folder: Jupyter
 ## Teoría del Error
 El error es inherente a los métodos numéricos, por tanto es fundamental hacer  seguimiento de la propagación de los errores cometidos a fin de poder estimar el grado de aproximación de la solución que se obtiene.
 
@@ -79,11 +53,7 @@ Dada una función en R² definida en un intervalo [a,b], estamos interesados en 
 * _Regla Simpson_
 * _Manejo del error_
 
-# Recursos
- * [Tutorial de Python 36] (https://books.google.com/books?id=TcAFMQAACAAJ) [2016]
- * [PITÓN 36 IDIOMA REF] (https://books.google.com/books?id=c4weMQAACAAJ) [2016]
-
-<style type="text/css">
+![<style type="text/css">
     .formula {
         background: #aaf;
         border-radius: 50px;
@@ -102,4 +72,4 @@ Dada una función en R² definida en un intervalo [a,b], estamos interesados en 
         padding: 3px 5px;
         margin: 0 2px;
     }
-</style>
+</style>]

@@ -53,7 +53,8 @@ Dada una función en R² definida en un intervalo [a,b], estamos interesados en 
 * _Regla Simpson_
 * _Manejo del error_
 
-![<style type="text/css">
+<head>
+<style type="text/css">
     .formula {
         background: #aaf;
         border-radius: 50px;
@@ -72,4 +73,5 @@ Dada una función en R² definida en un intervalo [a,b], estamos interesados en 
         padding: 3px 5px;
         margin: 0 2px;
     }
-</style>]
+</style>
+</head>

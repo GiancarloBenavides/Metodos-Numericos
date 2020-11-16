@@ -13,6 +13,7 @@ Tener una una version del interprete que incluya los paquetes para calculo numé
 :electron: Python
 
 ```Python
+# Módulos para instalar usando PIP o CONDA
 import NumPy
 import MatPlotLib
 ```
@@ -28,5 +29,5 @@ import MatPlotLib
 * Integración Numérica
 
 # Recursos
- * [Tutorial de Python 36] (https://books.google.com/books?id=TcAFMQAACAAJ) [2016]
- * [PITÓN 36 IDIOMA REF] (https://books.google.com/books?id=c4weMQAACAAJ) [2016]
+ * [Tutorial Python 3.6](https://books.google.com/books?id=TcAFMQAACAAJ) [2016]
+ * [Referencia Python 3.6](https://books.google.com/books?id=c4weMQAACAAJ) [2016]

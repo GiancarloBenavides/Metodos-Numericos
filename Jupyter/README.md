@@ -52,26 +52,3 @@ Dada una función en R² definida en un intervalo [a,b], estamos interesados en 
 * _Método del trapecio_
 * _Regla Simpson_
 * _Manejo del error_
-
-<head>
-<style type="text/css">
-    .formula {
-        background: #aaf;
-        border-radius: 50px;
-        padding: 15px;
-    }
-    .border {
-        display: inline-block;
-        border: solid 1px rgba(204, 204, 204, 0.4);
-        border-bottom-color: rgba(187, 187, 187, 0.4);
-        border-radius: 3px;
-        box-shadow: inset 0 -1px 0 rgba(187, 187, 187, 0.4);
-        background-color: inherit !important;
-        vertical-align: middle;
-        color: inherit !important;
-        font-size: 11px;
-        padding: 3px 5px;
-        margin: 0 2px;
-    }
-</style>
-</head>

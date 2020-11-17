@@ -29,7 +29,7 @@ Estos canales conectan el programa de computadora y su entorno.
 Python incluye por defecto funciones que permiten Entrada/Salida.
 Lo que hace posible introducir y recibir datos desde el programa. 
 
-## Tipos De Datos  
+## Variables y tipos De Datos  
 #### 03_test.py
 En programación, los tipos de datos definen los valores que puede tomar una variable.
 En Python existen 14 tipos de datos básicos con sus operaciones asociadas.
@@ -38,10 +38,11 @@ En Python todos los tipos de datos son objetos que heredan de una meta-clase.
 
 ## Operadores
 #### 04_test.py
-En programación, una función es una sección reusable y aislada de un programa.
-Python Dispone de 67 funciones internas que siempre se están disponibles.
-Estas están incluidas en un modulo que no necesita importarse.
-Naturalmente siempre se pueden sobrescribir estas o definir nuevas funciones. 
+En programación, los operadores se utilizan para obtener resultados desde otros datos o elementos.
+En Python estos elementos sobre los que se aplica la operación pertenecen a un tipo de dato.
+Cada tipo de dato tiene definidas las operaciones posibles entre sus elementos u objetos.
+Las operaciones se realizan operando sobre uno, dos o más objetos y tipos de datos.
+Los operadores son símbolos reservados por el propio lenguaje. 
 
 ## Funciones Incluidas - "Built-In"
 #### 05_test.py

@@ -1,5 +1,5 @@
 # test_03.py
-''' TIPOS DE DATOS
+''' VARIABLES Y TIPOS DE DATOS
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz. '''
 # Tipos de datos estándar de python 3

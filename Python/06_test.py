@@ -1,78 +1,40 @@
 # test_06.py
-''' ESTRUCTURAS DE CONTROL
+''' BIBLIOTECA ESTÁNDAR 
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
-# Estructuras de control
-""" En programación, las estructuras de control, permiten tomar decisiones.
-las estructuras de control modifican el flujo de ejecución de un programa.
-Python dispone de ciclos y condicionales para controlar el flujo de ejecución.
-→ Los ciclos son porciones de código que se repite hasta alanzar una condición.
-→ Los condicionale son porciones de código que se ejecutan según sea una condición.  """
+# Importando módulos biblioteca estándar
+""" En programación, las bibliotecas representan colecciones de código reusable.
+La mayor parte del poder de un lenguaje de programación está en sus bibliotecas.
+Un programa debe importar un módulo de biblioteca para poder usarlo.
+Use help() para conocer el contenido de un módulo de biblioteca. """
 
-# Declaración de variables
-directorio = eval("dir(__builtins__)")
-callables, noCallables, funciones, noFunciones = [], [], [], []
-excepciones, otrasClases, noClases = [], [], []
-errores, advertencias, otrasExcepciones, noExcepciones = [], [], [], []
-imprimir = []
-contador1, contador2 = 0, 0
+# Biblioteca Estándar incluida "Built-in"
+import os               # Importar toda la biblioteca para manejo del sistema operativo
+import sys              
+import time
+import math as m        # Alias para una biblioteca estándar de funciones matemáticas Math
+from math import pi     # Elementos específicos
 
-# Estructuras de control (Ciclos y condicionales)
-definiciones = len(directorio)
-for i in directorio:
-    if callable(eval(i)) == True:
-        callables.append(i)
-    else:
-        noCallables.append(i)
+# Mensaje de bienvenida por salida estándar
+print("----------------------------------------------")
+print(f"  Plataforma Tipo {str(os.name).upper()} de {os.cpu_count( )} núcleos")
+print(f"  Python {sys.version.split(' ')[0]} funcionando correctamente")
+print(f"  Usuario:  {os.getlogin()}")
+print(f"  Fecha:    {time.strftime('%b %d de %Y a las %I:%M:%S %p', time.localtime())}")
+print("----------------------------------------------")
 
-for i in callables:
-    try:
-        if eval(f"issubclass({i}, BaseException)"):
-            excepciones.append(i)
-        else:
-            otrasClases.append(i)
-    except:
-        noClases.append(i)
+# Entrada estándar
+radio = input("Elige el radio del circulo [cm]:    ")
 
-for i in excepciones:
-    if "Error" in i:
-        errores.append(i)
-    elif "Warning" in i:
-        advertencias.append(i)
-    else:
-        otrasExcepciones.append(i)
-
-for i in noClases:
-    tipo_cadena = str(type(eval(i))).split("'")[1]
-    if ("Printer" in tipo_cadena) or ("Helper" in tipo_cadena):
-        imprimir.append(i)
-    elif "builtin_function_or_method" == tipo_cadena:
-        funciones.append(i)
-    else:
-        noFunciones.append(i)
-
-# Asignaciones y operaciones con variables
-especiales = imprimir + noFunciones
-funciones_incluidas = otrasClases + funciones
+# Asignaciones y funciones estándar
+radio = int(radio)
+diámetro = 2 * radio
+area = m.pi * pow(radio, 2)
+circunferencia = 2 * pi * radio
 
 # Salida estándar
-print("-------------------------------------------------")
-print(" DECLARACIONES EN MODULO BUILTIN DE PYTHON       ")
-print("-------------------------------------------------")
-print(f"Total de definiciones incluidas ============= {len(directorio):3d}")
-print(f"  \u251c\u2500 Definiciones no invocables --------- {len(noCallables):3d}")
-print(f"  \u2514\u2500 Definiciones de excepciones -------- {len(excepciones):3d}")
-print(f"      \u251c\u2500 Tipos de error           : {len(errores):2d} :")
-print(f"      \u251c\u2500 Tipos de advertencias    : {len(advertencias):2d} :")
-print(f"      \u2514\u2500 Tipos otras excepciones  : {len(otrasExcepciones):2d} :")
-print(f"  \u2514\u2500 Definiciones especiales ------------ {len(especiales):3d}")
-print(f"      \u251c\u2500 Para imprimir objetos    : {len(imprimir):2d} :")
-print(f"      \u2514\u2500 Para detener ejecución   : {len(noFunciones):2d} :")
-print(f"  \u2514\u2500 Definiciones de funciones ---------- {len(funciones_incluidas):3d}")
-print(f"      \u251c\u2500 Casting de tipos         : {len(otrasClases):2d} :")
-print(f"      \u2514\u2500 Otras funciones          : {len(funciones):2d} :")
-print("-------------------------------------------------")
-print("FUNCIONES BUILTIN")
-print("-------------------------------------------------")
-print(funciones_incluidas)
-print("-------------------------------------------------")
+print("----------------------------------------------")
+print(f"El diámetro del circulo es:        {diámetro:5.1f} cm")
+print(f"La circunferencia del circulo es:  {circunferencia:5.1f} cm")
+print(f"El área aproximada del circulo es: {area:5.1f} cm\u00b2")
+print("----------------------------------------------")

@@ -10,12 +10,25 @@ Creado por Giancarlo Ortiz con Python en Jupyter Notebook.
 ## Pre-requisitos
 Tener una una version del interprete que incluya los paquetes para calculo numérico y gráficas 2D/3D
 
-:electron: Python
+```shell
+# Instalar o actualizar pip
+python -m pip install -U pip
 
-```Python
-# Módulos para instalar usando PIP o CONDA
-import NumPy
-import MatPlotLib
+# Instalar NumPy
+pip install numpy
+pip show numpy
+
+# Instalar MatPlotLib
+# MatPlotLib requiere NumPy
+pip install matplotlib
+pip show matplotlib
+```
+
+:electron: Python
+```python
+# Módulos Python para instalar usando PIP o CONDA
+import numpy as np
+import matplotlib as plt
 ```
 ## Contenido
 

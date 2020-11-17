@@ -1,40 +1,53 @@
 # test_05.py
-''' BIBLIOTECA ESTÁNDAR 
+''' FUNCIONES INCLUIDAS - "BUILT-IN"
 Ejemplo para el curso de métodos numéricos
-por Ing. Giancarlo Ortiz '''
-# Importando módulos biblioteca estándar
-""" En programación, las bibliotecas representan colecciones de código reusable.
-La mayor parte del poder de un lenguaje de programación está en sus bibliotecas.
-Un programa debe importar un módulo de biblioteca para poder usarlo.
-Use help() para conocer el contenido de un módulo de biblioteca. """
+por Ing. Giancarlo Ortiz. '''
+# Funciones incorporadas en el modulo estándar builtins
+""" En programación, una función es una sección reutilizable y aislada de un programa.
+Python Dispone de 67 funciones internas que siempre se están disponibles.
+Estas están incluidas en un modulo que no necesita importarse.
+Naturalmente siempre se pueden sobreescribir estas o definir nuevas funciones. """
 
-# Biblioteca Estándar incluida "Built-in"
-import os               # Importar toda la biblioteca para manejo del sistema operativo
-import sys              
-import time
-import math as m        # Alias para una biblioteca estándar de funciones matemáticas Math
-from math import pi     # Elementos específicos
-
-# Mensaje de bienvenida por salida estándar
-print("----------------------------------------------")
-print(f"  Plataforma Tipo {str(os.name).upper()} de {os.cpu_count( )} núcleos")
-print(f"  Python {sys.version.split(' ')[0]} funcionando correctamente")
-print(f"  Usuario:  {os.getlogin()}")
-print(f"  Fecha:    {time.strftime('%b %d de %Y a las %I:%M:%S %p', time.localtime())}")
-print("----------------------------------------------")
+# Declaración de variables
+tipos, lista = [], []       # Asignación multiple
+items = 5                   # Asignación simple
 
 # Entrada estándar
-radio = input("Elige el radio del circulo [cm]:    ")
+print(f"Ingrese {items} números decimales [\u00b1dd.dd] →")
 
-# Asignaciones y funciones estándar
-radio = int(radio)
-diámetro = 2 * radio
-area = m.pi * pow(radio, 2)
-circunferencia = 2 * pi * radio
+# Estructuras de control - ciclo for
+for x in range(items):
+    texto = input(f"Elija el número {x + 1} de {items}:      ")
+    largo = len(texto)
+    tipos.append(str(type(texto)).split("'")[1])
+    valor = float(texto)
+    lista.append(valor)
+
+# Mostrar valores ingresados por salida estándar
+print(f"Lista de valores      :    → {lista}")
+print(f"Lista de tipos        :    → {tipos}")
+
+# Asignaciones y llamado a funciones de la biblioteca estándar
+suma = sum(lista)
+largo = len(lista)
+promedio = suma/largo
+absoluto = abs(promedio)
+entero = int(promedio)
+decimal = promedio - entero
+binario = bin(entero)
+octal = oct(entero)
+hexadecimal = hex(entero)
 
 # Salida estándar
-print("----------------------------------------------")
-print(f"El diámetro del circulo es:        {diámetro:5.1f} cm")
-print(f"La circunferencia del circulo es:  {circunferencia:5.1f} cm")
-print(f"El área aproximada del circulo es: {area:5.1f} cm\u00b2")
-print("----------------------------------------------")
+print("-----------------------------------------")
+print(f"La suma exacta de los valores ingresados es |     {suma}")
+print(f"Si formateamos la suma a dos decimales es   | {suma:9.2f}")
+print(f"El promedio de los valores ingresados es    | {promedio:9.2f}")
+print("-----------------------------------------")
+print(f"la parte entera del promedio es             | {entero:9.2f}")
+print(f"la parte decimal del promedio es            | {decimal:9.2f}")
+print("-----------------------------------------")
+print(f"la parte entera del promedio en binario     |     {binario}")
+print(f"la parte entera del promedio en octal       |     {octal}")
+print(f"la parte entera del promedio en hexadecimal |     {hexadecimal}")
+print("-----------------------------------------")

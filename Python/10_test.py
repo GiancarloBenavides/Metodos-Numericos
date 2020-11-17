@@ -1,101 +1,76 @@
 # test_10.py
-''' ARCHIVOS
+''' GRÁFICAS
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
 # Instalar módulos
-''' Python proporciona funciones y métodos básicos para manipular archivos.
-Estos están disponibles en la biblioteca estándar de forma predeterminada. '''
+''' La generación de gráficos en Python requiere módulos adicionales.
+Existe una gran variedad de módulos para hacer gráficos de todo tipo con Python.
+Asi como  NumPy es el estándar de facto en ciencia para la operación numérica;
+Matplotlib, lo es para la generación de gráficos a partir de datos contenidos en listas o arrays. '''
 
-# Importar módulos
-import os
-import shutil
-import runpy as rp
-from matplotlib.pyplot import flag
-import test
+# Importar módulos incluidos en Python por defecto
+from sys import version as Py_version
+from time import gmtime as time
+from math import sqrt
 
-# defino una función para limpiar la salida estándar
-def limpiar():
-    if os.name == "nt":
-        os.system("cls")
-    else:
-        os.system("clear")
-
+# Importar módulos que deben ser instalados
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+from numpy import exp, pi
 
 # Declaración de variables
-Path_base = os.getcwd()
-Base = "/Python"
-Path1 = f".{Base}/01_test.py"
-Path2 = f".{Base}/08_test.py"
-Cadena_inicio = "# Importar"
-Cadena_fin = "# Salida"
-Modulo = "LabMath.py"
+amplitud_max = 4
+coeficiente_de_amortiguamiento = 0.07
+longitud = 10
+gravedad = 9.8
 
-# Operaciones con archivos
-limpiar()
-print(">>>")
-print(f" Ejecutando el script {Path1}")
-rp.run_path(path_name=Path1)
-print(">>>")
-print(f" Eliminando modulo {Modulo}")
-if os.path.exists(Modulo):
-    os.remove(Modulo)
+# Asignaciones y llamado a funciones
+periodo = 2 * pi * sqrt(longitud/gravedad) 
+frecuencia = 1 / periodo
+angular = 2 * pi * frecuencia
 
-# Lectura y escritura de archivos
-print(">>>")
-archivo_lectura = open(Path2, "rt", encoding="utf8")
-archivo_escritura = open(Modulo, "a", encoding="utf8")
-Guardar = False
-Texto = ""
-Contador = 0
-Inicio = 0
-Hash = 0
-for Linea in archivo_lectura:
-    Contador = Contador + 1
-    if Cadena_inicio in Linea:
-        print(f" Inicia la escritura desde: {Contador}")
-        Inicio = Contador
-        Guardar = True
-    if Cadena_fin in Linea:
-        print(f"::END::")
-        print(f" Finaliza la escritura del archivo")
-        print(f" Lineas escritas: {Contador-Inicio} Lineas")
-        Guardar = False
-        break
+# Construcción del vector de tiempo en NumPy
+tiempo = np.linspace(0, 60, 256, endpoint=True)
 
-    if Guardar:
-        Hash = Hash + 1
-        if Hash < 40:
-            print(f"-", end="")
-        else:
-            Hash = 0
-            print(f"-")
-        archivo_escritura.write(Linea)
+# Operación con vectores en NumPy de posición
+K = amplitud_max * exp(-coeficiente_de_amortiguamiento * tiempo)
+position = K * np.cos(angular * tiempo)
+velocidad = K * np.sin(angular * tiempo)
 
+# Gráficas
+plt.plot(tiempo, position, label="Posición x(\u03B8)")
+plt.plot(tiempo, velocidad, label="Velocidad v(\u03B8)")
+plt.legend()
 
-archivo_lectura.close()
-archivo_escritura.close()
+# Propiedades de las gráficas - Texto
+plt.title("Posición y Velocidad del Péndulo Simple")
+plt.xlabel("tiempo [sg]")
+plt.ylabel("amplitud [grados]")
 
-# Moviendo archivos
-print(">>>")
-print(f" Moviendo el script {Modulo}")
-if os.path.exists(Modulo):
-    shutil.move(Modulo, f".{Base}/{Modulo}")
+# Propiedades de las gráficas - Limites
+plt.xlim(0, 60)
+limites_x = plt.xlim()
 
-# Importando archivos
-print("---------------------------------------")
-print(f" Importando el script {Modulo}")
-print("---------------------------------------")
-import numpy as np          # Importando dependencias
-import LabMath as al        # Importar el archivo creado
+# Lineas de división
+plt.xticks([0, 10, 20, 30, 40, 50, 60])
+plt.yticks([-1.5 * amplitud_max, 0, 1.5 * amplitud_max])
 
-# Operaciones con el archivo importado
-A = np.array([[1, 1], [-1, -3]])
-D = al.det(A)
+# Expresiones matemáticas con MathTex (Matplotlib)
+plt.text(35, -8, r'$T=2\pi\sqrt{\frac{l}{g}}=$' + f"{periodo:2.2f} sg", fontsize=9)
+plt.text(35, -10, r'$f=frac{l}{T}=$' + f"{frecuencia:2.2f} hz", fontsize=9)
+plt.text(35, -12, r'$\omega=2\pi f=$' + f"{angular:2.2f} radianes/sg", fontsize=9)
+plt.text(1, -1.45 * amplitud_max, f"Metodos Numéricos (Ortiz, {time().tm_year})", fontsize=5)
 
-print(f" creando vector de prueba:")
-print(">>>")
-print(f"\n{A}\n")
-print(f" Calculando el determinante:")
-print(">>>")
-print(f"\n{D}\n")
-print("---------------------------------------")
+# Salida en pantalla via TK
+plt.show()
+
+# Salida estándar por consola
+print("----------------------------------------------------")
+print(f" Matplotlib importado con éxito")
+print("----------------------------------------------------")
+print(f" Versión Python:        {Py_version.split(' ')[0]}")
+print(f" Versión NumPy:         {np.__version__}")
+print(f" Version Matplotlib:    {matplotlib.__version__}")
+print(f" Backend gráfico:       {matplotlib.get_backend()}")
+print("----------------------------------------------------")

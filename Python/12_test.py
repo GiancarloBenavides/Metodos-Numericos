@@ -48,6 +48,7 @@ print(EXTERNO); rp.run_path(path_name=Path1)
 print(NORMAL, PROMPT, f" Eliminando Archivo {Modulo}")
 if os.path.exists(Modulo):
     os.remove(Modulo)
+    # Permite mantener las líneas entre [70 - 90] caracteres.
     print(EXTERNO,f"---------------------------------------\n"
                 + f"        {Modulo} Eliminado             \n"
                 + f"---------------------------------------")

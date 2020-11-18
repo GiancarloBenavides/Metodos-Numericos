@@ -1,76 +1,168 @@
 # test_10.py
-''' GRÁFICAS
+''' FUNCIONES
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
 # Instalar módulos
-''' La generación de gráficos en Python requiere módulos adicionales.
-Existe una gran variedad de módulos para hacer gráficos de todo tipo con Python.
-Asi como  NumPy es el estándar de facto en ciencia para la operación numérica;
-Matplotlib, lo es para la generación de gráficos a partir de datos contenidos en listas o arrays. '''
+''' Las funciones en Python se definen con la palabra clave def, seguida del nombre de la función.
+Sus parámetros se escriben entre parentesis y pueden incluir valores por defecto.
+Otra forma de escribir funciones, aunque menos utilizada, es con la palabra clave lambda.
+El valor devuelto en las funciones con def será el dado con la instrucción return. '''
 
-# Importar módulos incluidos en Python por defecto
-from sys import version as Py_version
-from time import gmtime as time
-from math import sqrt
-
-# Importar módulos que deben ser instalados
-import matplotlib
-import matplotlib.pyplot as plt
+# DECLARACIÓN:
+# Importar módulos que requieren instalación
 import numpy as np
-from numpy import exp, pi
+from numpy import ndarray
+from numpy.core.records import array
 
-# Declaración de variables
-amplitud_max = 4
-coeficiente_de_amortiguamiento = 0.07
-longitud = 10
-gravedad = 9.8
+# Definiciones de nuevas funciones con la palabra clave Def
+def _menor(A: ndarray, i: int, j: int):
+    ''' Define el menor de la matriz A como Ă(i, j). 
+    
+        ## Parametros:
+            A (array): una matriz.
+            i (int): el primer indice.
+            j (int): el segundo indice.
+        
+        ## Devoluciones:
+            B (array): retorna el menor. 
+    '''
+    B = np.delete(A, i-1, axis=0)
+    C = np.delete(B, j-1, axis=1)
+    return C
 
-# Asignaciones y llamado a funciones
-periodo = 2 * pi * sqrt(longitud/gravedad) 
-frecuencia = 1 / periodo
-angular = 2 * pi * frecuencia
 
-# Construcción del vector de tiempo en NumPy
-tiempo = np.linspace(0, 60, 256, endpoint=True)
+def _cofactor(A: ndarray, i: int, j: int):
+    ''' Define el cofactor A(i, j) de una matriz A dada. 
+        
+        ## Parametros:
+            A (array): una matriz.
+            i (int): el primer indice.
+            j (int): el segundo indice.
+        
+        ## Devoluciones:
+            B (float): retorna el cofactor. 
+    '''
+    B = _menor(A, i, j)
+    C = pow(-1, i+j) * round(np.linalg.det(B), 3)
+    return C
 
-# Operación con vectores en NumPy de posición
-K = amplitud_max * exp(-coeficiente_de_amortiguamiento * tiempo)
-position = K * np.cos(angular * tiempo)
-velocidad = K * np.sin(angular * tiempo)
 
-# Gráficas
-plt.plot(tiempo, position, label="Posición x(\u03B8)")
-plt.plot(tiempo, velocidad, label="Velocidad v(\u03B8)")
-plt.legend()
+def _matriz_de_cofactores(A: ndarray):
+    ''' Define la matriz de cofactores, que se obtiene de sustituir cada termino de A(i,j) por el C(i,j).
+    
+        ## Parametros:
+            A (array): una matriz.
+        
+        ## Devoluciones:
+            B (array): la matriz de cofactores. 
+    '''
+    filas = A.shape[0]
+    columnas = A.shape[1]
+    B = np.zeros_like(A)
+    for i in range(filas):
+        for j in range(columnas):
+            B[i, j] = _cofactor(A, i+1, j+1)
+    return B
 
-# Propiedades de las gráficas - Texto
-plt.title("Posición y Velocidad del Péndulo Simple")
-plt.xlabel("tiempo [sg]")
-plt.ylabel("amplitud [grados]")
 
-# Propiedades de las gráficas - Limites
-plt.xlim(0, 60)
-limites_x = plt.xlim()
+def _matriz_adjunta(A: ndarray):
+    ''' Define la matriz de adjunta, que se obtiene de la transpuesta de la matriz de cofactores.
+    
+        ## Parametros:
+            A (array): una matriz.
+        
+        ## Devoluciones:
+            B (array): la matriz adjunta. 
+    '''
+    B = np.transpose(_matriz_de_cofactores(A))
+    return B
 
-# Lineas de división
-plt.xticks([0, 10, 20, 30, 40, 50, 60])
-plt.yticks([-1.5 * amplitud_max, 0, 1.5 * amplitud_max])
 
-# Expresiones matemáticas con MathTex (Matplotlib)
-plt.text(35, -8, r'$T=2\pi\sqrt{\frac{l}{g}}=$' + f"{periodo:2.2f} sg", fontsize=9)
-plt.text(35, -10, r'$f=frac{l}{T}=$' + f"{frecuencia:2.2f} hz", fontsize=9)
-plt.text(35, -12, r'$\omega=2\pi f=$' + f"{angular:2.2f} radianes/sg", fontsize=9)
-plt.text(1, -1.45 * amplitud_max, f"Metodos Numéricos (Ortiz, {time().tm_year})", fontsize=5)
+def _determinante(A: ndarray):
+    ''' Define el determinante de una matriz A dada.
+    
+        ## Parametros:
+            A (array): una matriz.
+        
+        ## Devoluciones:
+            B (float): el determinante de la matriz. 
+    '''
+    filas = A.shape[0]
+    columnas = A.shape[1]
+    if (filas != columnas):
+        return f"ERROR: Determinante no esta definido para matrices {filas}x{columnas}"
+    if (filas == 1):
+        return A[0][0]
+    sum = 0
+    for i in range(filas):
+        C = pow(-1, i+2) * A[i][0]
+        M = _menor(A, i+1, 1)
+        D = C * _determinante(M)
+        sum = D + sum
+    return sum
 
-# Salida en pantalla via TK
-plt.show()
+# Definiciones de nuevas funciones con la palabra clave Lambda
+cof = lambda A: _matriz_de_cofactores(A)
+adj = lambda A: _matriz_adjunta(A)
+det = lambda A: _determinante(A)
+inv = lambda A: (1/det(A))*adj(A)
 
-# Salida estándar por consola
-print("----------------------------------------------------")
-print(f" Matplotlib importado con éxito")
-print("----------------------------------------------------")
-print(f" Versión Python:        {Py_version.split(' ')[0]}")
-print(f" Versión NumPy:         {np.__version__}")
-print(f" Version Matplotlib:    {matplotlib.__version__}")
-print(f" Backend gráfico:       {matplotlib.get_backend()}")
-print("----------------------------------------------------")
+# Asignación y llamado a funciones declaradas en el script
+def _calcular_matrices(A):
+    ''' Imprimir en pantalla una demostración de la funcionalidad.
+    '''
+    # funciones definidas en el script
+    Matriz_Cofactores = cof(A)
+    Matriz_Adjunta = adj(A)
+    Matriz_Inversa = inv(A)              
+    return Matriz_Cofactores, Matriz_Adjunta, Matriz_Inversa
+
+# Función que no retorna ningún valor
+def demo(Array):
+    ''' Imprimir en pantalla una demostración de la funcionalidad.
+    '''
+    M13 = _menor(Array, 1, 3)
+    C13 = _cofactor(Array, 1, 3)
+    
+    # Asignación multiple usando una función que retorna múltiples valores
+    Cof, Adj, Inv = _calcular_matrices(Array)
+
+    # función incorporada en NumPy para comparar
+    Inv_np = np.linalg.inv(Array)           
+    
+    # Salida Estándar
+    print(f"--------------------------------------------------------")
+    print(f"Dada una matriz de entrada A en R³:")
+    print(f">>>")
+    print(f"\n{Array}\n")
+    print(f"--------------------------------------------------------")
+    print(f"Se tiene que cada matriz  Ă(i,j) se define como el menor")
+    print(f"que resulta  de eliminar  la i-ésima fila  y  la j-ésima")
+    print(f"columna, por ejemplo A₁₃ es:")
+    print(f">>>")
+    print(f"\n{M13}\n")
+    print(f"--------------------------------------------------------")
+    print(f"El cofactor se define como C(i,j) =(-1)²det(Ă(i,j)), por")
+    print(f"ejemplo C₁₃ es igual a {C13};  finalmente se tiene que la")
+    print(f"matriz de  cofactores de A en R³ definida como Cof(A) es")
+    print(f"aquella  que resulta de  reemplazar cada elemento por su") 
+    print(f"cofactor:")
+    print(f">>>")
+    print(f"\n{Cof}\n")
+    print(f"--------------------------------------------------------")
+    print(f"Y la matriz adjunta  definida  como la transpuesta de la")
+    print(f"matriz de cofactores es Adj(A) =trs(Cof(A)) que resulta:")
+    print(f">>>")
+    print(f"\n{Adj}\n")
+    print(f"--------------------------------------------------------")
+    print(f"Finalmente dado que inv(A) = (1/det(A)).adj(A) se  tiene")
+    print(f"que la inversa definida en el script y la de NumPy son:")
+    print(f">>>")
+    print(f"\n{Inv}\n")
+    print(f">>>")
+    print(f"\n{Inv_np}\n")
+
+# EJECUCIÓN:
+# Definición de un vector de prueba en R³ usando un tipo de dato de NumPy
+Array_de_prueba = np.array([[1, 1, 1], [-1, 2, -3], [3, 0, 2]])
+demo(Array_de_prueba)

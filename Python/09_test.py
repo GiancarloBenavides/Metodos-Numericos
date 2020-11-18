@@ -1,149 +1,61 @@
 # test_09.py
-''' FUNCIONES
+''' IMPORTAR MÓDULOS NO INCLUIDOS
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
 # Instalar módulos
-''' Las funciones en Python se definen con la palabra clave def, seguida del nombre de la función.
-Sus parámetros se escriben entre parentesis y pueden incluir valores por defecto.
-Otra forma de escribir funciones, aunque menos utilizada, es con la palabra clave lambda.
-El valor devuelto en las funciones con def será el dado con la instrucción return. '''
+''' Los módulos que no están incluidos deben instalarse para poder importarse.
+Los módulos de Python están disponibles para instalar con cualquier administrador de paquetes.
+Los administradores de paquetes son herramientas como pip de Pypi o conda de Anaconda
+EJEMPLO:
+→ D:\> pip install numpy.
+→ D:\> conda install numpy.
+NOTAS:
+→ Anaconda administra las dependencias y permite instalar software no Python. 
+→ Pypi es un repositorio que hace disponible mas de 270K paquetes. '''
 
-# Importar módulos que requieren instalación
+# Importar módulos de la biblioteca estándar (incluidos)
+from sys import version as Py_version
+from time import localtime, strftime
+from math import floor, ceil, trunc, sqrt, pi, e
+from matplotlib.pyplot import xlim
+
+# Importar módulos que necesitan ser instalados
 import numpy as np
-from numpy import ndarray
 
-# Definiciones de nuevas funciones con la palabra clave Def
-def menor(A: ndarray, i: int, j: int):
-    ''' Define el menor de la matriz A como Ă(i, j). 
-    
-        ## Parametros:
-            A (array): una matriz.
-            i (int): el primer indice.
-            j (int): el segundo indice.
-        
-        ## Devoluciones:
-            B (array): retorna el menor. 
-    '''
-    B = np.delete(A, i-1, axis=0)
-    C = np.delete(B, j-1, axis=1)
-    return C
+# Asignaciones y operaciones con números
+n1 = (1+sqrt(5))/2
+n2 = e
+n3 = pi
 
+# Asignaciones y llamado a funciones de módulos incluidos en Python por defecto
+numero_de_redondeos = 5
+x1, y1, z1 = round(n1, 3), round(n2, 3), round(n3, 3)
+x2, y2, z2 = int(n1), int(n2), int(n3)
+x3, y3, z3 = floor(n1), floor(n2), floor(n3)
+x4, y4, z4 = ceil(n1), ceil(n2), ceil(n3)
+x5, y5, z5 = trunc(n1), trunc(n2), trunc(n3)
 
-def cofactor(A: ndarray, i: int, j: int):
-    ''' Define el cofactor A(i, j) de una matriz A dada. 
-        
-        ## Parametros:
-            A (array): una matriz.
-            i (int): el primer indice.
-            j (int): el segundo indice.
-        
-        ## Devoluciones:
-            B (float): retorna el cofactor. 
-    '''
-    B = menor(A, i, j)
-    C = pow(-1, i+j) * round(np.linalg.det(B), 3)
-    return C
-
-
-def matriz_de_cofactores(A: ndarray):
-    ''' Define la matriz de cofactores, que se obtiene de sustituir cada termino de A(i,j) por el C(i,j).
-    
-        ## Parametros:
-            A (array): una matriz.
-        
-        ## Devoluciones:
-            B (array): la matriz de cofactores. 
-    '''
-    filas = A.shape[0]
-    columnas = A.shape[1]
-    B = np.zeros_like(A)
-    for i in range(filas):
-        for j in range(columnas):
-            B[i, j] = cofactor(A, i+1, j+1)
-    return B
-
-
-def matriz_adjunta(A: ndarray):
-    ''' Define la matriz de adjunta, que se obtiene de la transpuesta de la matriz de cofactores.
-    
-        ## Parametros:
-            A (array): una matriz.
-        
-        ## Devoluciones:
-            B (array): la matriz adjunta. 
-    '''
-    B = np.transpose(matriz_de_cofactores(A))
-    return B
-
-
-def determinante(A: ndarray):
-    ''' Define el determinante de una matriz A dada.
-    
-        ## Parametros:
-            A (array): una matriz.
-        
-        ## Devoluciones:
-            B (float): el determinante de la matriz. 
-    '''
-    filas = A.shape[0]
-    columnas = A.shape[1]
-    if (filas != columnas):
-        return f"ERROR: Determinante no esta definido para matrices {filas}x{columnas}"
-    if (filas == 1):
-        return A[0][0]
-    sum = 0
-    for i in range(filas):
-        C = pow(-1, i+2) * A[i][0]
-        M = menor(A, i+1, 1)
-        D = C * determinante(M)
-        sum = D + sum
-    return sum
-
-# Definiciones de nuevas funciones con la palabra clave Lambda
-cof = lambda A: matriz_de_cofactores(A)
-adj = lambda A: matriz_adjunta(A)
-det = lambda A: determinante(A)
-inv = lambda A: (1/det(A))*adj(A)
-
-# Definición de un vector de prueba en R³ usando un tipo de dato de NumPy
-A = np.array([[1, 1, 1], [-1, 2, -3], [3, 0, 2]])
-
-# Asignación y llamado a funciones declaradas en el script
-A13 = menor(A, 1, 3)
-C13 = cofactor(A, 1, 3)
-Cof = cof(A)
-Adj = adj(A)
-Inv = inv(A)              # función definida en el script
-Inv_np = np.linalg.inv(A) # función incorporada en NumPy
+# Asignaciones y llamado a funciones de módulos incluidos en NumPy
+au = np.array([n1, x1, x2, x3, x4, x5]) # Asignación de los redondeos del número áureo en un vector  
+eu = np.array([n2, y1, y2, y3, y4, y5]) # Asignación de los redondeos del número euler en un vector  
+pi = np.array([n3, z1, z2, z3, z4, z5]) # Asignación de los redondeos del número pi en un vector  
 
 # Salida estándar
-print(f"--------------------------------------------------------")
-print(f"Dada una matriz de entrada A en R³:")
-print(f">>>")
-print(f"\n{A}\n")
-print(f"--------------------------------------------------------")
-print(f"Se tiene que cada matriz  Ă(i,j) se define como el menor")
-print(f"que resulta  de eliminar  la i-ésima fila  y  la j-ésima")
-print(f"columna, por ejemplo A₁₃ es:")
-print(f">>>")
-print(f"\n{A13}\n")
-print(f"--------------------------------------------------------")
-print(f"El cofactor se define como C(i,j) =(-1)²det(Ă(i,j)), por")
-print(f"ejemplo C₁₃ es igual a {C13};  finalmente se tiene que la")
-print(f"matriz de  cofactores de A en R³ definida como Cof(A) es")
-print(f"aquella  que resulta de  reemplazar cada elemento por su") 
-print(f"cofactor:")
-print(f">>>")
-print(f"\n{Cof}\n")
-print(f"--------------------------------------------------------")
-print(f"Y la matriz adjunta  definida  como la transpuesta de la")
-print(f"matriz de cofactores es Adj(A) =trs(Cof(A)) que resulta:")
-print(f">>>")
-print(f"\n{Adj}\n")
-print(f"--------------------------------------------------------")
-print(f"Finalmente dado que inv(A) = (1/det(A)).adj(A) se  tiene")
-print(f"que la inversa definida en el script y la de NumPy son:")
-print(f">>>")
-print(f"\n{Inv}\n")
-print(f">>>")
-print(f"\n{Inv_np}\n")
+print(f"-----------------------------------------------------")
+print(f" Fecha: {strftime('%b %d de %Y a las %I:%M:%S %p', localtime())}")
+print(f" NumPy importado con éxito")
+print(f" Versión Python: {Py_version.split(' ')[0]}")
+print(f" Versión NumPy:  {np.__version__}")
+print(f"-----------------------------------------------------")
+print(f' Número áureo:       {au[0]}')
+print(f' Número de euler:    {eu[0]}')
+print(f' Número pi:          {pi[0]}')
+print(f"-----------------------------------------------------")
+print(f" Redondeo \ Número    |  Áureo  |  Euler  |    Pi    |")
+print(f"-----------------------------------------------------")
+print(f' Redondeo con round() |   {au[1]:.3f} |  {eu[1]:.3f}  |   {pi[1]:.3f}  |')
+print(f' Redondeo con int()   |   {au[2]:.3f} |  {eu[2]:.3f}  |   {pi[2]:.3f}  |')
+print(f' Redondeo con floor() |   {au[3]:.3f} |  {eu[3]:.3f}  |   {pi[3]:.3f}  |')
+print(f' Redondeo con ceil()  |   {au[4]:.3f} |  {eu[4]:.3f}  |   {pi[4]:.3f}  |')
+print(f' Redondeo con trunc() |   {au[5]:.3f} |  {eu[5]:.3f}  |   {pi[5]:.3f}  |')
+print("-----------------------------------------------------")

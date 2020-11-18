@@ -16,10 +16,10 @@ print(f" OBJETOS")
 
 # Tipos numéricos
 print(f"  \u251c\u2500 NÚMEROS")
-_Entero = int(5)
-_Lógico = bool(5)
-_Real = float(5)
-_Complejo = complex(1, 5)
+_Entero = 5
+_Lógico = True
+_Real = 5.0
+_Complejo = 1.7 + 5j
 print(f"      \u251c\u2500 Entero ------- {_Entero}")
 print(f"      \u251c\u2500 Lógico ------- {_Lógico}")
 print(f"      \u251c\u2500 Real --------- {_Real}")
@@ -27,13 +27,13 @@ print(f"      \u2514\u2500 Complejo ----- {_Complejo}\n")
 
 # Tipos de secuencias
 print(f"  \u251c\u2500 SECUENCIAS")
-_Cadena = str("Esto es una cadena")
-_Unicode = str(U"\u01e4\u03af\u03b1\u03b7c\u03b1rl\u03c3")
-_Lista = list([1, 2, 3, '...'])
-_Octeto = bytearray('esto es un byte', 'utf-8')
-_Octetos = bytes('esto es un byte', 'utf-8')
-_Tupla = tuple(_Lista)
-_Rango = range(3)
+_Cadena = "Esto es una cadena"
+_Unicode = U"\u01e4\u03af\u03b1\u03b7c\u03b1rl\u03c3"
+_Lista = [1, 2, 3, '...']
+_Octeto = bytearray('esto es un array de bytes', 'utf-8')
+_Octetos = b'esto es una cadena de bytes'
+_Tupla = (1, 2, 3, '...')
+_Rango = range(0, 3)
 print(f"      \u251c\u2500 MUTABLES")
 print(f"          \u251c\u2500 Lista ----------------- {_Lista}")
 print(f"          \u2514\u2500 Secuencia de Bytes ---- {_Octeto}")
@@ -45,8 +45,8 @@ print(f"          \u2514\u2500 Rango ----------------- {_Rango}\n")
 
 # Tipos de colecciones
 print(f"  \u251c\u2500 COLECCIONES")
-_Set = set(_Lista)
-_Frozenset = frozenset(_Lista)
+_Set = {1, 2, 3, '...'}
+_Frozenset = frozenset({1, 2, 3, '...'})
 print(f"      \u251c\u2500 MUTABLES")
 print(f"          \u2514\u2500 Set -------- {_Set}")
 print(f"      \u2514\u2500 INMUTABLES")

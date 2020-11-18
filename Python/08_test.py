@@ -1,61 +1,78 @@
 # test_08.py
-''' IMPORTAR MÓDULOS NO INCLUIDOS
+''' ESTRUCTURAS DE CONTROL
 Ejemplo para el curso de métodos numéricos
 por Ing. Giancarlo Ortiz '''
-# Instalar módulos
-''' Los módulos que no están incluidos deben instalarse para poder importarse.
-Los módulos de Python están disponibles para instalar con cualquier administrador de paquetes.
-Los administradores de paquetes son herramientas como pip de Pypi o conda de Anaconda
-EJEMPLO:
-→ D:\> pip install numpy.
-→ D:\> conda install numpy.
-NOTAS:
-→ Anaconda administra las dependencias y permite instalar software no Python. 
-→ Pypi es un repositorio que hace disponible mas de 270K paquetes. '''
+# Estructuras de control
+""" En programación, las estructuras de control, permiten tomar decisiones.
+las estructuras de control modifican el flujo de ejecución de un programa.
+Python dispone de ciclos y condicionales para controlar el flujo de ejecución.
+→ Los ciclos son porciones de código que se repite hasta alanzar una condición.
+→ Los condicionale son porciones de código que se ejecutan según sea una condición.  """
 
-# Importar módulos de la biblioteca estándar (incluidos)
-from sys import version as Py_version
-from time import localtime, strftime
-from math import floor, ceil, trunc, sqrt, pi, e
-from matplotlib.pyplot import xlim
+# Declaración de variables
+directorio = eval("dir(__builtins__)")
+callables, noCallables, funciones, noFunciones = [], [], [], []
+excepciones, otrasClases, noClases = [], [], []
+errores, advertencias, otrasExcepciones, noExcepciones = [], [], [], []
+imprimir = []
+contador1, contador2 = 0, 0
 
-# Importar módulos que necesitan ser instalados
-import numpy as np
+# Estructuras de control (Ciclos y condicionales)
+definiciones = len(directorio)
+for i in directorio:
+    if callable(eval(i)) == True:
+        callables.append(i)
+    else:
+        noCallables.append(i)
 
-# Asignaciones y operaciones con números
-n1 = (1+sqrt(5))/2
-n2 = e
-n3 = pi
+for i in callables:
+    try:
+        if eval(f"issubclass({i}, BaseException)"):
+            excepciones.append(i)
+        else:
+            otrasClases.append(i)
+    except:
+        noClases.append(i)
 
-# Asignaciones y llamado a funciones de módulos incluidos en Python por defecto
-numero_de_redondeos = 5
-x1, y1, z1 = round(n1, 3), round(n2, 3), round(n3, 3)
-x2, y2, z2 = int(n1), int(n2), int(n3)
-x3, y3, z3 = floor(n1), floor(n2), floor(n3)
-x4, y4, z4 = ceil(n1), ceil(n2), ceil(n3)
-x5, y5, z5 = trunc(n1), trunc(n2), trunc(n3)
+for i in excepciones:
+    if "Error" in i:
+        errores.append(i)
+    elif "Warning" in i:
+        advertencias.append(i)
+    else:
+        otrasExcepciones.append(i)
 
-# Asignaciones y llamado a funciones de módulos incluidos en NumPy
-au = np.array([n1, x1, x2, x3, x4, x5]) # Asignación de los redondeos del número áureo en un vector  
-eu = np.array([n2, y1, y2, y3, y4, y5]) # Asignación de los redondeos del número euler en un vector  
-pi = np.array([n3, z1, z2, z3, z4, z5]) # Asignación de los redondeos del número pi en un vector  
+for i in noClases:
+    tipo_cadena = str(type(eval(i))).split("'")[1]
+    if ("Printer" in tipo_cadena) or ("Helper" in tipo_cadena):
+        imprimir.append(i)
+    elif "builtin_function_or_method" == tipo_cadena:
+        funciones.append(i)
+    else:
+        noFunciones.append(i)
+
+# Asignaciones y operaciones con variables
+especiales = imprimir + noFunciones
+funciones_incluidas = otrasClases + funciones
 
 # Salida estándar
-print(f"-----------------------------------------------------")
-print(f" Fecha: {strftime('%b %d de %Y a las %I:%M:%S %p', localtime())}")
-print(f" NumPy importado con éxito")
-print(f" Versión Python: {Py_version.split(' ')[0]}")
-print(f" Versión NumPy:  {np.__version__}")
-print(f"-----------------------------------------------------")
-print(f' Número áureo:       {au[0]}')
-print(f' Número de euler:    {eu[0]}')
-print(f' Número pi:          {pi[0]}')
-print(f"-----------------------------------------------------")
-print(f" Redondeo \ Número    |  Áureo  |  Euler  |    Pi    |")
-print(f"-----------------------------------------------------")
-print(f' Redondeo con round() |   {au[1]:.3f} |  {eu[1]:.3f}  |   {pi[1]:.3f}  |')
-print(f' Redondeo con int()   |   {au[2]:.3f} |  {eu[2]:.3f}  |   {pi[2]:.3f}  |')
-print(f' Redondeo con floor() |   {au[3]:.3f} |  {eu[3]:.3f}  |   {pi[3]:.3f}  |')
-print(f' Redondeo con ceil()  |   {au[4]:.3f} |  {eu[4]:.3f}  |   {pi[4]:.3f}  |')
-print(f' Redondeo con trunc() |   {au[5]:.3f} |  {eu[5]:.3f}  |   {pi[5]:.3f}  |')
-print("-----------------------------------------------------")
+print("-------------------------------------------------")
+print(" DECLARACIONES EN MODULO BUILTIN DE PYTHON       ")
+print("-------------------------------------------------")
+print(f"Total de definiciones incluidas ============= {len(directorio):3d}")
+print(f"  \u251c\u2500 Definiciones no invocables --------- {len(noCallables):3d}")
+print(f"  \u2514\u2500 Definiciones de excepciones -------- {len(excepciones):3d}")
+print(f"      \u251c\u2500 Tipos de error           : {len(errores):2d} :")
+print(f"      \u251c\u2500 Tipos de advertencias    : {len(advertencias):2d} :")
+print(f"      \u2514\u2500 Tipos otras excepciones  : {len(otrasExcepciones):2d} :")
+print(f"  \u2514\u2500 Definiciones especiales ------------ {len(especiales):3d}")
+print(f"      \u251c\u2500 Para imprimir objetos    : {len(imprimir):2d} :")
+print(f"      \u2514\u2500 Para detener ejecución   : {len(noFunciones):2d} :")
+print(f"  \u2514\u2500 Definiciones de funciones ---------- {len(funciones_incluidas):3d}")
+print(f"      \u251c\u2500 Casting de tipos         : {len(otrasClases):2d} :")
+print(f"      \u2514\u2500 Otras funciones          : {len(funciones):2d} :")
+print("-------------------------------------------------")
+print("FUNCIONES BUILTIN")
+print("-------------------------------------------------")
+print(funciones_incluidas)
+print("-------------------------------------------------")

@@ -12,7 +12,8 @@ El error es inherente a los métodos numéricos, por tanto es fundamental hacer 
     * _Error absoluto_
     * _Error relativo_
 * _Propagación del Error_
-* _Convergencia_
+    * _Estabilidad_
+    * _Convergencia_
 
 ## Raíces de ecuaciones
 El objetivo de este apartado es la determinación de los valores de la variable independiente x para los que se cumple:

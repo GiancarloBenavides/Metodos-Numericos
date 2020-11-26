@@ -45,7 +45,7 @@ print(NORMAL, PROMPT, f" Ejecutando el script {Path1}")
 print(EXTERNO); rp.run_path(path_name=Path1)
 
 # Eliminando un archivo
-print(NORMAL, PROMPT, f" Eliminando Archivo {Modulo}")
+print(NORMAL, PROMPT, f" Eliminando el Archivo {Modulo}")
 if os.path.exists(Modulo):
     os.remove(Modulo)
     # Permite mantener las líneas entre [70 - 90] caracteres.
@@ -55,7 +55,7 @@ if os.path.exists(Modulo):
 
 
 # Lectura y escritura de archivos
-print(NORMAL, PROMPT, f" Ejecutando el script {Path1}")
+print(NORMAL, PROMPT, f" Creando el nuevo script {Modulo}")
 print(ESCRITURA, f"---------------------------------------")
 archivo_lectura = open(Path2, "rt", encoding="utf8")
 archivo_escritura = open(Modulo, "a", encoding="utf8")
@@ -93,7 +93,7 @@ archivo_lectura.close()
 archivo_escritura.close()
 
 # Moviendo archivos
-print(NORMAL, PROMPT, f" Moviendo el archivo creado a {Path1}")
+print(NORMAL, PROMPT, f" Moviendo el archivo creado a {Modulo}")
 if os.path.exists(Modulo):
     shutil.move(Modulo, f".{Base}/{Modulo}")
     print(ELIMINADO,  f"---------------------------------------\n"
@@ -127,4 +127,4 @@ print(EXTERNO,    f"---------------------------------------\n"
 print(ESCRITURA, f"\n{D}\n")
 
 print(EXTERNO, "---------------------------------------")
-print(NORMAL, PROMPT, f" FIN DE CURSO (no olvides practicar)...")
+print(NORMAL, PROMPT, f" FIN DE CURSO DE PYTHON (no olvides practicar)...")

@@ -8,6 +8,24 @@ En Python existen 14 tipos de datos básicos con sus operaciones asociadas.
 Todo valor que pueda ser asignado a una variable tiene asociado un tipo de dato.
 En Python todos los tipos de datos son objetos que heredan de una meta-clase. """
 
+# Identificadores
+""" En programación los identificadores son nombres que hacen referencia a los objetos que componen un programa.
+Estos pueden ser constantes, variables, funciones, clases, etc...
+En Python existen una reglas para usar identificadores:
+> El primer carácter debe ser una letra o el carácter de subrayado [a-z, A-Z, _]
+> El segundo y siguientes pueden ser dígitos, letras o carácteres de subrayado [a-z, A-Z, 1-9, _]
+> No pueden utilizarse espacios en blanco, símbolos de puntuación o palabras reservadas del lenguaje
+> Python distingue mayúsculas y minúsculas. """
+
+# Estilo de identificadores - La legibilidad cuenta
+CONSTANTE = 1            
+VARIABLE = 2
+Variable = 3
+_Privado = 4        # Subrayado simple -
+__Privado__ = 4     # Subrayado Doble - Especiales
+Lista = [CONSTANTE, VARIABLE, Variable, _Privado, __Privado__]
+
+
 # Árbol de Tipos 
 print("-------------------------")
 print(" TIPOS DE DATOS EN PYTHON")

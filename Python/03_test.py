@@ -18,12 +18,13 @@ En Python existen una reglas para usar identificadores:
 > Python distingue mayúsculas y minúsculas. """
 
 # Estilo de identificadores - La legibilidad cuenta
-CONSTANTE = 1            
+CONSTANTE = 1           # Mayúsculas - Por convención constante    
 VARIABLE = 2
 Variable = 3
-_Privado = 4        # Subrayado simple -
-__Privado__ = 4     # Subrayado Doble - Especiales
-Lista = [CONSTANTE, VARIABLE, Variable, _Privado, __Privado__]
+_Privado = 4            # Un subrayado simple - Por convención privado
+__Privado = 5           # Un subrayado doble - Marcados para renombrar en una clase
+__Privado__ = 6_000     # Dos subrayados doble - Especiales
+Lista = [CONSTANTE, VARIABLE, Variable, _Privado, __Privado, __Privado__]
 
 
 # Árbol de Tipos 

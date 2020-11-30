@@ -5,8 +5,15 @@ por Ing. Giancarlo Ortiz '''
 # Importando módulos biblioteca estándar
 """ En programación, las bibliotecas representan colecciones de código reusable.
 La mayor parte del poder de un lenguaje de programación está en sus bibliotecas.
-Un programa debe importar un módulo de biblioteca para poder usarlo.
+Python incluye 67 módulos en su biblioteca estándar.
+En Python un programa debe importar un módulo de la biblioteca para poder usarlo.
 Use help() para conocer el contenido de un módulo de biblioteca. """
+
+# Ejecución de módulos
+""" Cuando un modulo se importa se crea un espacio de nombres con la definiciones del módulo. 
+Las definiciones incluyen el nombre del modulo, en la variable con el identificador __name__.
+En python un módulo puede ser ejecutado como un script o como punto de entrada de un programa,
+En este caso el nombre del módulo __name__ = '__main__'. """
 
 # Biblioteca Estándar incluida "Built-in"
 import os               # Importar toda la biblioteca para manejo del sistema operativo

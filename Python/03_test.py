@@ -17,6 +17,12 @@ En Python existen una reglas para usar identificadores:
 > No pueden utilizarse espacios en blanco, símbolos de puntuación o palabras reservadas del lenguaje
 > Python distingue mayúsculas y minúsculas. """
 
+# El ámbito
+""" En programación, el ámbito es el contexto que pertenece un identificador dentro de un programa.
+Esto es util cuando se requiere definir dos variable con el mismo identificador en diferentes partes del programa.
+En python las variables definidas en una función son locales a la función y no existen fuera de ella.
+Las funciones dentro de los script son globales y cualquier sentencia puede modificarla. """
+
 # Estilo de identificadores - La legibilidad cuenta
 CONSTANTE = 1           # Mayúsculas - Por convención constante    
 VARIABLE = 2

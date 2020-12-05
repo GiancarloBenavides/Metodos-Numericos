@@ -18,7 +18,7 @@ from numpy.core.records import array
 def _menor(A: ndarray, i: int, j: int):
     ''' Define el menor de la matriz A como Ă(i, j). 
     
-        ## Parametros:
+        ## Parámetros:
             A (array): una matriz.
             i (int): el primer indice.
             j (int): el segundo indice.
@@ -34,7 +34,7 @@ def _menor(A: ndarray, i: int, j: int):
 def _cofactor(A: ndarray, i: int, j: int):
     ''' Define el cofactor A(i, j) de una matriz A dada. 
         
-        ## Parametros:
+        ## Parámetros:
             A (array): una matriz.
             i (int): el primer indice.
             j (int): el segundo indice.
@@ -50,7 +50,7 @@ def _cofactor(A: ndarray, i: int, j: int):
 def _matriz_de_cofactores(A: ndarray):
     ''' Define la matriz de cofactores, que se obtiene de sustituir cada termino de A(i,j) por el C(i,j).
     
-        ## Parametros:
+        ## Parámetros:
             A (array): una matriz.
         
         ## Devoluciones:
@@ -68,7 +68,7 @@ def _matriz_de_cofactores(A: ndarray):
 def _matriz_adjunta(A: ndarray):
     ''' Define la matriz de adjunta, que se obtiene de la transpuesta de la matriz de cofactores.
     
-        ## Parametros:
+        ## Parámetros:
             A (array): una matriz.
         
         ## Devoluciones:
@@ -81,7 +81,7 @@ def _matriz_adjunta(A: ndarray):
 def _determinante(A: ndarray):
     ''' Define el determinante de una matriz A dada.
     
-        ## Parametros:
+        ## Parámetros:
             A (array): una matriz.
         
         ## Devoluciones:

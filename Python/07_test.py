@@ -12,7 +12,7 @@ Use help() para conocer el contenido de un módulo de biblioteca. """
 # Ejecución de módulos
 """ Cuando un modulo se importa se crea un espacio de nombres con la definiciones del módulo. 
 Las definiciones incluyen el nombre del modulo, en la variable con el identificador __name__.
-En python un módulo puede ser ejecutado como un script o como punto de entrada de un programa,
+En Python un módulo puede ser ejecutado como un script o como punto de entrada de un programa,
 En este caso el nombre del módulo __name__ = '__main__'. """
 
 # Biblioteca Estándar incluida "Built-in"

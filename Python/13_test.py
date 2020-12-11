@@ -29,7 +29,7 @@ def _buscar_intervalos(fun, ini, fin):
 
 # Función de trabajo
 def F(x):
-    y = x**2 - 2 # np.exp(3*x - 12) + x * np.cos(3*x) - x**2 + 7.15
+    y = np.exp(3*x - 12) + x * np.cos(3*x) - x**2 + 7.15
     return  y
 
 def pos(inicio, final, porcentaje):
@@ -39,7 +39,7 @@ def pos(inicio, final, porcentaje):
 
 # Intervalo de estudio
 a = -4
-b = 4
+b = 6
 Fa = F(a)
 Fb = F(b)
 

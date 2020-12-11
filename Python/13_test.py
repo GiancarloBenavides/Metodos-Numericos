@@ -1,4 +1,4 @@
-
+# Importar librerías
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -21,39 +21,46 @@ def _buscar_intervalos(fun, ini, fin):
         i += 1
         if fun(i) == 0:
             I.append((i, i))
-        elif fun(i+1) == 0:
-            I.append((i+1, i+1))
         elif fun(i) * fun(i+1) < 0:
             I.append((i, i+1))
         else:
             pass
     return I
 
-x = np.linspace(-4, 5.5, 1024)
-
+# Función de trabajo
 def F(x):
-    y = np.exp(3*x - 12) + x * np.cos(3*x) - x**2 + 7.15
+    y = x**2 - 2 # np.exp(3*x - 12) + x * np.cos(3*x) - x**2 + 7.15
     return  y
 
-I = _buscar_intervalos(F,-4, 6)
+def pos(inicio, final, porcentaje):
+    delta = final - inicio
+    pos = inicio + delta*porcentaje/100
+    return pos
 
-print(I)
+# Intervalo de estudio
+a = -4
+b = 4
+Fa = F(a)
+Fb = F(b)
 
-Tolerancia = 1e-1
-Iteraciones = 20
-
-# Método de la bisección
-# ----------------------
-# Limites
-Xi=I[0][0]
-Xs=I[0][1]
-
+x = np.linspace(a, b, 1024)
+Intervalos = _buscar_intervalos(F, a, b)
 
 # Gráfica
 plt.axhline(y = 0, color="gray")
 plt.plot(x, F(x))
+plt.text(pos(a, b, 5), pos(Fa, Fb, 95), f"Intervalos = {Intervalos}")
 plt.grid()
 plt.show()
+
+# Método de la bisección
+# ----------------------
+Tolerancia = 1e-4
+Iteraciones = 20
+
+# Limites
+Xi=Intervalos[0][0]
+Xs=Intervalos[0][1]
 
 # Iteraciones
 for No in range(Iteraciones):
@@ -62,10 +69,10 @@ for No in range(Iteraciones):
     ea = abs(Xs-Xi)/2
     plt.axhline(y = 0, color="gray")
     plt.plot(x, F(x))
-    plt.axvline(x = Xs, color="#f00")
+    plt.axvline(x = Xs, color="#F00")
     plt.axvline(x = Xm, color="#00F")
-    plt.axvline(x = Xi, color="#f00")
-    plt.text(1, 1, f"Xm = {Xm}\nea = {ea}")
+    plt.axvline(x = Xi, color="#F00")
+    plt.text(pos(a, b, 40), pos(Fa, Fb, 90), f"Xm = {Xm}\nea = {ea}")
     plt.grid()
     plt.show()
     if F(Xi)*F(Xm) < 0:

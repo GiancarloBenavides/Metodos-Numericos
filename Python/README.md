@@ -110,7 +110,7 @@ En programación las funciones son rutinas que deben declararse antes de invocar
 ## Gráficas
 ---
 #### 11_test.py
-En programación la generación de interfaces requiere módulos o librerías adicionales.
+En programación, la generación de interfaces requiere módulos o librerías adicionales.
 * Estas funcionalidades están estrechamente ligadas a la plataforma de ejecución.
 * Existe una gran variedad de librerías para hacer gráficos en todas las plataformas.
 > En Python, NumPy es el estándar de facto en ciencia para la operación numérica y Matplotlib, 
@@ -122,3 +122,10 @@ En programación la generación de interfaces requiere módulos o librerías adi
 Las plataformas exponen funcionalidad a los lenguajes para el manejo del sistema de archivos.
 > Python proporciona funciones y métodos básicos para manipular archivos.
 > Estos están disponibles en la biblioteca estándar de forma predeterminada.
+
+## Creación de Módulos
+---
+#### 13_test.py
+En programación, es util aplicar la metodología top-down para dividir la solución de un problema en  conjunto de sub-problemas menores, maas sencillos de resolver; esto que es posible con la construcción de módulos o librerías adicionales.
+> Python permite extender la funcionalidad del lenguaje con módulos y librerías.
+> Estos módulos pueden estar escritos en el propio lenguaje o en otros lenguajes como C, R, o Latex.

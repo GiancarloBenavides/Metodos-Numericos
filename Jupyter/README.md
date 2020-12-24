@@ -24,8 +24,9 @@ El objetivo de este apartado es la determinación de los valores de la variable 
 ### Métodos:
 * _Método de Bisección_
 * _Método de Falsa Posición_
-* _Método de la Secante_
+* _Método del punto fijo_
 * _Método de Newton_
+* _Método de la Secante_
 * _Raíces de un polinomio_
 
 ## Solución de Sistemas de Ecuaciones Lineales
@@ -49,6 +50,7 @@ Dada una función en R² definida en un intervalo [a,b], estamos interesados en 
 
 ### Métodos:
 * _Introducción_
+* _Métodos de Riemann_
 * _Método del punto medio_
 * _Método del trapecio_
 * _Regla Simpson_

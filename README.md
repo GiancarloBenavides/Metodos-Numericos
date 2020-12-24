@@ -4,10 +4,12 @@ Galileo Galilei (1564-1642):
 >Las matemáticas son el alfabeto con el cual Dios ha escrito el Universo
 
 # Métodos-Numéricos
+---
 Notas y algoritmos para el curso de Métodos Numéricos 2020-B
 Creado por Giancarlo Ortiz con Python en Jupyter Notebook.
 
 ## Pre-requisitos
+---
 Tener una una version del interprete que incluya los paquetes para calculo numérico y gráficas 2D/3D
 
 :electron: En la Terminal
@@ -31,16 +33,17 @@ import numpy as np
 import matplotlib as plt
 ```
 ## Contenido
-
+---
 :file_folder: Python
 * Generalidades De Python 
 
 :file_folder: Jupyter
 * Teoría del Error
 * Raíces de ecuaciones
-* Solución de Sistemas de Ecuaciones Lineales
 * Integración Numérica
+* Solución de sistemas de ecuaciones lineales
 
 # Recursos
+---
  * [Tutorial Python 3.6](https://books.google.com/books?id=TcAFMQAACAAJ) [2016]
  * [Referencia Python 3.6](https://books.google.com/books?id=c4weMQAACAAJ) [2016]

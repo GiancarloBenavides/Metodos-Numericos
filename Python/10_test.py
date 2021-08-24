@@ -14,7 +14,7 @@ import numpy as np
 from numpy import ndarray
 from numpy.core.records import array
 
-# Definiciones de nuevas funciones con la palabra clave Def
+# Definición de nuevas funciones con la palabra clave Def
 def _menor(A: ndarray, i: int, j: int) -> ndarray:
     ''' Define el menor de la matriz A como Ă(i, j). 
     

@@ -15,7 +15,7 @@ from numpy import ndarray
 from numpy.core.records import array
 
 # Definiciones de nuevas funciones con la palabra clave Def
-def _menor(A: ndarray, i: int, j: int):
+def _menor(A: ndarray, i: int, j: int) -> ndarray:
     ''' Define el menor de la matriz A como Ă(i, j). 
     
         ## Parámetros:
@@ -31,7 +31,7 @@ def _menor(A: ndarray, i: int, j: int):
     return C
 
 
-def _cofactor(A: ndarray, i: int, j: int):
+def _cofactor(A: ndarray, i: int, j: int) -> float:
     ''' Define el cofactor A(i, j) de una matriz A dada. 
         
         ## Parámetros:
@@ -78,7 +78,7 @@ def _matriz_adjunta(A: ndarray):
     return B
 
 
-def _determinante(A: ndarray):
+def _determinante(A: list) -> float:
     ''' Define el determinante de una matriz A dada.
     
         ## Parámetros:
